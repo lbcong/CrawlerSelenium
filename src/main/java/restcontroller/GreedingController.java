@@ -39,7 +39,8 @@ public class GreedingController {
         String output = "";
         try {
             //https://www.youtube.com/watch?v=sYbd4jDn-kA
-            webDriver = new HtmlUnitDriver();
+            //webDriver = new HtmlUnitDriver();
+            webDriver = new ChromeDriver();
             //testVideo();
             openTestSite();
             login("admin", "12345");
