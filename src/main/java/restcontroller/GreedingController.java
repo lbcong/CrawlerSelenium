@@ -38,6 +38,8 @@ public class GreedingController {
     public String selenium() {
         String output = "";
         try {
+            System.setProperty("webdriver.chrome.driver", "/app/.chromedriver/bin/chromedriver");
+
             //https://www.youtube.com/watch?v=sYbd4jDn-kA
             //webDriver = new HtmlUnitDriver();
             webDriver = new ChromeDriver();
