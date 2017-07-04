@@ -1,4 +1,3 @@
-
 package restcontroller;
 
 import java.io.File;
@@ -39,15 +38,16 @@ public class GreedingController {
     public String selenium() {
         String output = "";
         try {
+            System.setProperty("webdriver.chrome.driver", "D:\\NetBeansProjects\\Service Cloud\\chromedriver_win32\\chromedriver.exe");
             //https://www.youtube.com/watch?v=sYbd4jDn-kA
-            webDriver = new HtmlUnitDriver();
-            testVideo();
-            //openTestSite();
-            //login("admin", "12345");
-            //getText();
-
-            // closeBrowser();
-            return "";
+            // webDriver = new HtmlUnitDriver();
+            webDriver = new ChromeDriver();
+            //testVideo();
+            openTestSite();
+            login("admin", "12345");
+            output=getText();
+            closeBrowser();
+            return output;
         } catch (Exception e) {
             e.getMessage();
             return "loi : " + e.getMessage();
@@ -81,7 +81,6 @@ public class GreedingController {
             webDriver.get("https://www.youtube.com/watch?v=sYbd4jDn-kA");
             Thread.sleep(8000);
 
-            
         } catch (Exception e) {
             e.getMessage();
         }
