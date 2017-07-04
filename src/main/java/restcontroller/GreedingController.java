@@ -1,4 +1,3 @@
-
 package restcontroller;
 
 import java.io.File;
@@ -44,7 +43,7 @@ public class GreedingController {
             //testVideo();
             openTestSite();
             login("admin", "12345");
-            output=getText();
+            output = getText();
 
             closeBrowser();
             return output;
@@ -81,7 +80,6 @@ public class GreedingController {
             webDriver.get("https://www.youtube.com/watch?v=sYbd4jDn-kA");
             Thread.sleep(8000);
 
-            
         } catch (Exception e) {
             e.getMessage();
         }
