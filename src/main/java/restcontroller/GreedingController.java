@@ -29,7 +29,7 @@ public class GreedingController {
 
     public static WebDriver webDriver = null;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String greeding() {
 
         return "Hello ";
