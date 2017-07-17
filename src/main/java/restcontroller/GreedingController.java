@@ -39,7 +39,10 @@ public class GreedingController {
         String output = "";
         try {
             ///app/.apt/usr/bin/
-            System.setProperty("webdriver.chrome.driver", "/app/.apt/usr/bin/google-chrome");
+            //System.setProperty("webdriver.chrome.driver", "/app/.apt/usr/bin/google-chrome");
+            //System.setProperty("webdriver.chrome.driver", "D:\\NetBeansProjects\\Service Cloud\\chromedriver_win32\\chromedriver.exe");
+
+            System.setProperty("webdriver.chrome.driver", "C:\\Users\\Hello\\Downloads\\Compressed\\chromedriver.exe");
 
             //https://www.youtube.com/watch?v=sYbd4jDn-kA
             //webDriver = new HtmlUnitDriver();
@@ -62,8 +65,7 @@ public class GreedingController {
     public String seleniumGoogle() {
         String output = "";
         try {
-            System.setProperty("webdriver.chrome.driver", "D:\\NetBeansProjects\\Service Cloud\\chromedriver_win32\\chromedriver.exe");
-            //https://www.youtube.com/watch?v=sYbd4jDn-kA
+
             webDriver = new ChromeDriver();
 
             testVideo();

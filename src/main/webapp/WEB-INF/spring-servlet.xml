@@ -24,7 +24,8 @@
 
     
     <context:component-scan base-package="restcontroller"></context:component-scan>
-
+     <context:component-scan base-package="Bean"></context:component-scan>
+     <context:component-scan base-package="Service"></context:component-scan>
    
 
     <context:annotation-config/>
