@@ -39,23 +39,40 @@ public class Test {
     Dply_co dply_co;
     WebDriver webDriver;
 
-    @RequestMapping(value = "/test/{username}/{pass}", method = RequestMethod.GET)
-    public String selenium(
+    @RequestMapping(value = "/create/{username}/{pass}", method = RequestMethod.GET)
+    public String createVPS(
             @PathVariable("username") String username,
             @PathVariable("pass") String pass) {
         String output = "";
         try {
-            System.setProperty("webdriver.chrome.driver", "D:\\NetBeansProjects\\Service Cloud\\chromedriver_win32\\chromedriver.exe");
             webDriver = new ChromeDriver();
             //webDriver = new HtmlUnitDriver();
-            //openTestSite();
             dply_co.OpenDly(webDriver);
             gitHub.LoginGitHub(username, pass, webDriver);
             dply_co.CreateServer(webDriver);
             dply_co.getIP(webDriver);
 
-            //LogoutGitHub();
-            closeBrowser();
+            //closeBrowser();
+            return output;
+        } catch (Exception e) {
+            e.getMessage();
+            return "loi : " + e.getMessage();
+        }
+
+    }
+
+    @RequestMapping(value = "/getInfo/{username}/{pass}", method = RequestMethod.GET)
+    public String getInfo(
+            @PathVariable("username") String username,
+            @PathVariable("pass") String pass) {
+        String output = "";
+        try {
+
+            dply_co.OpenDly(webDriver);
+            gitHub.LoginGitHub(username, pass, webDriver);
+            output = dply_co.getIP(webDriver);
+
+            //closeBrowser();
             return output;
         } catch (Exception e) {
             e.getMessage();

@@ -2,6 +2,7 @@ package restcontroller;
 
 import java.io.File;
 import java.io.IOException;
+import javax.annotation.PostConstruct;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,9 @@ import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,15 +42,13 @@ public class GreedingController {
     public String selenium() {
         String output = "";
         try {
+            System.setProperty("webdriver.chrome.driver", "D:\\NetBeansProjects\\Service Cloud\\chromedriver_win32\\chromedriver.exe");
+            webDriver = new ChromeDriver();
             ///app/.apt/usr/bin/
             //System.setProperty("webdriver.chrome.driver", "/app/.apt/usr/bin/google-chrome");
-            //System.setProperty("webdriver.chrome.driver", "D:\\NetBeansProjects\\Service Cloud\\chromedriver_win32\\chromedriver.exe");
 
-            System.setProperty("webdriver.chrome.driver", "C:\\Users\\Hello\\Downloads\\Compressed\\chromedriver.exe");
-
-            //https://www.youtube.com/watch?v=sYbd4jDn-kA
             //webDriver = new HtmlUnitDriver();
-            webDriver = new ChromeDriver();
+            //webDriver = new ChromeDriver();
             //testVideo();
             openTestSite();
             login("admin", "12345");

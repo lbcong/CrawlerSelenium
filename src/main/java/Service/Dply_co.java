@@ -20,25 +20,35 @@ public class Dply_co {
         Random rd = new Random();
         int temp = rd.nextInt(9999);
         try {
+
             WebElement linkcreate = webDriver.findElement(By.xpath("//a[@class='waves-effect waves-light btn-large green']"));
+            Thread.sleep(100);
             linkcreate.click();
+            Thread.sleep(100);
             //
-            WebElement name = webDriver.findElement(By.id("servername"));
-            name.sendKeys("fwefwsdfsdase"+temp);
-            //
+
             Select os = new Select(webDriver.findElement(By.id("os")));
             os.selectByVisibleText("Ubuntu 16.04");
             //
+
+            WebElement name = webDriver.findElement(By.id("servername"));
+            name.sendKeys("fwefwsdfsdase" + temp);
+            //
+
             Select region = new Select(webDriver.findElement(By.id("region")));
             region.selectByVisibleText("Toronto");
             //
+
             Select plan = new Select(webDriver.findElement(By.id("plan")));
             plan.selectByVisibleText("2 Hours (FREE)");
             //
+
             Select key = new Select(webDriver.findElement(By.id("key")));
             key.selectByIndex(1);
             //
+            Thread.sleep(100);
             WebElement submit_button = webDriver.findElement(By.xpath("//button[@class='g-recaptcha ']"));
+            Thread.sleep(100);
             submit_button.click();
             int x = 9;
             return true;
@@ -52,7 +62,7 @@ public class Dply_co {
 
         try {
             webDriver.navigate().to("https://dply.co/");
-            
+
             WebElement link = webDriver.findElement(By.xpath("//a[@class='waves-effect waves-light btn-large blue darken-1 signin']"));
             link.click();
             int x = 9;
