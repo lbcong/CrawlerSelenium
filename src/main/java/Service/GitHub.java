@@ -16,15 +16,15 @@ public class GitHub {
     public boolean LoginGitHub(String username, String passw, WebDriver webDriver) {
 
         try {
-            Thread.sleep(100);
+            Thread.sleep(1000);
             WebElement user = webDriver.findElement(By.id("login_field"));
-            Thread.sleep(100);
+            Thread.sleep(1000);
             WebElement password = webDriver.findElement(By.id("password"));
-            Thread.sleep(100);
+            Thread.sleep(1000);
             WebElement submit_button = webDriver.findElement(By.xpath("//input[@value='Sign in']"));
-            Thread.sleep(100);
+            Thread.sleep(1000);
             user.sendKeys(username);
-            Thread.sleep(100);
+            Thread.sleep(1000);
             password.sendKeys(passw);
             Thread.sleep(100);
             submit_button.click();

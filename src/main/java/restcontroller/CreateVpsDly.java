@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import static restcontroller.GreedingController.webDriver;
+import ConstantVariable.Constant;
 
 @RestController
 public class CreateVpsDly {
@@ -45,20 +46,20 @@ public class CreateVpsDly {
     WriteFile writeFile;
     @Autowired
     Dply_co dply_co;
+
+    Constant constant;
     WebDriver webDriver;
 
     private Thread[] thread;
-    private int NumberAccount = 2;
+    private int NumberAccount = 14;
     private List<AccountInfo> listAccountInfo = null;
     private boolean FlagActive = false;
-    private String dirFileAccount = "C:\\FileAccount\\Account.txt";
 
     @PostConstruct
     public void initBinder() {
         try {
             //
-            System.setProperty("webdriver.chrome.driver", "D:\\NetBeansProjects\\Service Cloud\\chromedriver_win32\\chromedriver.exe");
-
+            System.setProperty(constant.webDriverGoogle, constant.binaryGoogle);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -74,7 +75,7 @@ public class CreateVpsDly {
                 public void run() {
                     try {
 
-                        List<String> s_list = readFile.readFile(dirFileAccount);
+                        List<String> s_list = readFile.readFile(constant.dirFileAccount);
                         listAccountInfo = getInfoAccount.getListInfo(s_list);
                         //
                         FlagActive = true;
@@ -83,7 +84,7 @@ public class CreateVpsDly {
                         //
                         for (int i = 0; i < NumberAccount; i++) {
                             createThreadToHack(i);
-                            Thread.sleep(100);
+                            Thread.sleep(120000);
                         }
                     } catch (Exception e) {
                         e.getMessage();
@@ -139,9 +140,15 @@ public class CreateVpsDly {
                 //
                 Thread.sleep(180000);
                 //
-                listAccountInfo.get(indexofAccount).setIp(getInfoAccount.getIp(dply_co.getIP(webDriver)));
+                String rs = dply_co.getIP(webDriver);
+
+                if (rs == null) {
+                    continue;
+                }
+
+                listAccountInfo.get(indexofAccount).setIp(getInfoAccount.getIp(rs));
                 //
-                listAccountInfo.get(indexofAccount).setKey("E:\\Soft\\Remote Server Linux\\" + listAccountInfo.get(indexofAccount).getUser() + ".ppk");
+                listAccountInfo.get(indexofAccount).setKey(constant.dirKey + listAccountInfo.get(indexofAccount).getUser() + ".ppk");
                 //
                 writeFile.writeFile(listAccountInfo);
                 //
@@ -150,11 +157,12 @@ public class CreateVpsDly {
                 // sau 2 tieng
 
                 Thread.sleep(7200000);
-                session.disconnect();
+
             }
 
         } catch (Exception e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
+
         }
 
     }

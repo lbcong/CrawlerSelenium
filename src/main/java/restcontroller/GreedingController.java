@@ -42,7 +42,7 @@ public class GreedingController {
     public String selenium() {
         String output = "";
         try {
-            System.setProperty("webdriver.chrome.driver", "D:\\NetBeansProjects\\Service Cloud\\chromedriver_win32\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "C:\\FileAccount\\chromedriver.exe");
             webDriver = new ChromeDriver();
             ///app/.apt/usr/bin/
             //System.setProperty("webdriver.chrome.driver", "/app/.apt/usr/bin/google-chrome");
