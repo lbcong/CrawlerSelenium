@@ -1,5 +1,6 @@
 package restcontroller;
 
+import ConstantVariable.Constant;
 import java.io.File;
 import java.io.IOException;
 import javax.annotation.PostConstruct;
@@ -42,8 +43,10 @@ public class GreedingController {
     public String selenium() {
         String output = "";
         try {
-            System.setProperty("webdriver.chrome.driver", "/home/chromedriver");
-            webDriver = new ChromeDriver();
+            File pathToBinary = new File(Constant.binaryFirefox);
+            FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
+            FirefoxProfile firefoxProfile = new FirefoxProfile();
+            WebDriver webDriver = new FirefoxDriver(ffBinary, firefoxProfile);
             ///app/.apt/usr/bin/
             //System.setProperty("webdriver.chrome.driver", "/app/.apt/usr/bin/google-chrome");
 
