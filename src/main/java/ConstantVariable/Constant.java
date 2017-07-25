@@ -18,7 +18,7 @@ public interface Constant {
     String binaryGoogle = "";
     //
     String webDriverFirefox = "webdriver.gecko.driver";
-    String dirDriverFirefox = "/usr/bin/firefox";
-    String binaryFirefox = "/home/geckodriver";
+    String dirDriverFirefox = "/home/geckodriver";
+    String binaryFirefox = "/usr/bin/firefox";
     
 }
