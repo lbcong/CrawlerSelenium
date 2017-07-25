@@ -5,11 +5,20 @@
  */
 package ConstantVariable;
 
-
 public interface Constant {
 
-    String dirFileAccount = "C:\\FileAccount\\Account.txt";
-    String dirKey = "C:\\FileAccount\\key\\";
+    String typeKeyPub = ".pub";
+    String typeKeyPPK = ".ppk";
+    String dirFileAccount = "/home/FileAccount/Account.txt";
+    String dirFileResult = "/home/FileAccount/Result.txt";
+    String dirKey = "/home/FileAccount/Key/";
+    //
     String webDriverGoogle = "webdriver.chrome.driver";
-     String binaryGoogle = "C:\\FileAccount\\chromedriver_win32\\chromedriver.exe";
+    String dirDriverGoogle = "/home/chromedriver";
+    String binaryGoogle = "";
+    //
+    String webDriverFirefox = "webdriver.gecko.driver";
+    String dirDriverFirefox = "/usr/bin/firefox";
+    String binaryFirefox = "/home/geckodriver";
+    
 }

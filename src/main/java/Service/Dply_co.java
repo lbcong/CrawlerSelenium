@@ -6,12 +6,16 @@
 package Service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.stereotype.Service;
+import static restcontroller.GreedingController.webDriver;
 
 @Service
 public class Dply_co {
@@ -20,42 +24,43 @@ public class Dply_co {
         Random rd = new Random();
         int temp = rd.nextInt(9999);
         try {
-
+            Thread.sleep(2000);
             WebElement linkcreate = webDriver.findElement(By.xpath("//a[@class='waves-effect waves-light btn-large green']"));
             Thread.sleep(2000);
             linkcreate.click();
-           Thread.sleep(2000);
+            Thread.sleep(2000);
             //
-            
+
             Select os = new Select(webDriver.findElement(By.id("os")));
+            Thread.sleep(2000);
+            String s = os.getFirstSelectedOption().getText();
             Thread.sleep(2000);
             os.selectByVisibleText("Ubuntu 16.04");
             //
-
+            Thread.sleep(2000);
             WebElement name = webDriver.findElement(By.id("servername"));
-             Thread.sleep(2000);
+            Thread.sleep(2000);
             name.sendKeys("fwefwsdfsdase" + temp);
             //
-
+            Thread.sleep(2000);
             Select region = new Select(webDriver.findElement(By.id("region")));
-             Thread.sleep(2000);
+            Thread.sleep(2000);
             region.selectByVisibleText("Toronto");
             //
-
+            Thread.sleep(2000);
             Select plan = new Select(webDriver.findElement(By.id("plan")));
-             Thread.sleep(2000);
+            Thread.sleep(2000);
             plan.selectByVisibleText("2 Hours (FREE)");
             //
-
+            Thread.sleep(2000);
             Select key = new Select(webDriver.findElement(By.id("key")));
-             Thread.sleep(2000);
+            Thread.sleep(2000);
             key.selectByIndex(1);
             //
             Thread.sleep(2000);
             WebElement submit_button = webDriver.findElement(By.xpath("//button[@class='g-recaptcha ']"));
-           Thread.sleep(2000);
-            submit_button.click();
-            int x = 9;
+            Thread.sleep(2000);
+
             return true;
         } catch (Exception e) {
             e.getMessage();
@@ -66,12 +71,13 @@ public class Dply_co {
     public boolean OpenDly(WebDriver webDriver) {
 
         try {
+            Thread.sleep(2000);
             webDriver.navigate().to("https://dply.co/");
             Thread.sleep(2000);
             WebElement link = webDriver.findElement(By.xpath("//a[@class='waves-effect waves-light btn-large blue darken-1 signin']"));
             Thread.sleep(2000);
             link.click();
-            int x = 9;
+
             return true;
         } catch (Exception e) {
             e.getMessage();

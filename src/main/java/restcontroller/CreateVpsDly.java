@@ -30,6 +30,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import static restcontroller.GreedingController.webDriver;
 import ConstantVariable.Constant;
+import java.io.File;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
 @RestController
 public class CreateVpsDly {
@@ -47,11 +49,8 @@ public class CreateVpsDly {
     @Autowired
     Dply_co dply_co;
 
-    Constant constant;
-    WebDriver webDriver;
-
     private Thread[] thread;
-    private int NumberAccount = 14;
+    private int NumberAccount = 2;
     private List<AccountInfo> listAccountInfo = null;
     private boolean FlagActive = false;
 
@@ -59,7 +58,7 @@ public class CreateVpsDly {
     public void initBinder() {
         try {
             //
-            System.setProperty(constant.webDriverGoogle, constant.binaryGoogle);
+            System.setProperty(Constant.webDriverFirefox, Constant.dirDriverFirefox);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,17 +68,17 @@ public class CreateVpsDly {
     public String start() {
         String output = "";
         try {
-
             Thread startThread = new Thread() {
                 @Override
                 public void run() {
                     try {
 
-                        List<String> s_list = readFile.readFile(constant.dirFileAccount);
+                        List<String> s_list = readFile.readFile(Constant.dirFileAccount);
                         listAccountInfo = getInfoAccount.getListInfo(s_list);
+                        NumberAccount = listAccountInfo.size();
                         //
                         FlagActive = true;
-                        //
+
                         thread = new Thread[NumberAccount];
                         //
                         for (int i = 0; i < NumberAccount; i++) {
@@ -118,56 +117,51 @@ public class CreateVpsDly {
         thread[id_thread].start();
     }
 
-    public void createVPS(int indexofAccount) {
+    public void createVPS(int indexofAccount) throws Exception {
+
         String output = "";
-        try {
-            WebDriver webDriver = new ChromeDriver();
 
-            while (true) {
-                if (!FlagActive) {
-                    break;
-                }
-                //
-                dply_co.OpenDly(webDriver);
-                Thread.sleep(2000);
-                //
-                gitHub.LoginGitHub(listAccountInfo.get(indexofAccount).getUser(),
-                        listAccountInfo.get(indexofAccount).getPass(),
-                        webDriver);
-                //
-                Thread.sleep(100);
-                dply_co.CreateServer(webDriver);
-                //
-                Thread.sleep(180000);
-                //
-                String rs = dply_co.getIP(webDriver);
+        File pathToBinary = new File(Constant.binaryFirefox);
+        FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
+        FirefoxProfile firefoxProfile = new FirefoxProfile();
+        WebDriver webDriver = new FirefoxDriver(ffBinary, firefoxProfile);
 
-                if (rs == null) {
-                    continue;
-                }
-
-                listAccountInfo.get(indexofAccount).setIp(getInfoAccount.getIp(rs));
-                //
-                listAccountInfo.get(indexofAccount).setKey(constant.dirKey + listAccountInfo.get(indexofAccount).getUser() + ".ppk");
-                //
-                writeFile.writeFile(listAccountInfo);
-                //
-                Session session = null;
-                connectSSH.connectSSH(listAccountInfo.get(indexofAccount), session);
-                // sau 2 tieng
-
-                Thread.sleep(7200000);
-
+        while (true) {
+            if (!FlagActive) {
+                break;
             }
+            //
+            dply_co.OpenDly(webDriver);
+            Thread.sleep(2000);
+            //
+            gitHub.LoginGitHub(listAccountInfo.get(indexofAccount).getUser(),
+                    listAccountInfo.get(indexofAccount).getPass(),
+                    webDriver);
+            //
+            Thread.sleep(100);
+            dply_co.CreateServer(webDriver);
+            //
+            Thread.sleep(120000);
+            //
+            String rs = dply_co.getIP(webDriver);
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            if (rs == null) {
+                continue;
+            }
+            listAccountInfo.get(indexofAccount).setIp(getInfoAccount.getIp(rs));
+            //
+            listAccountInfo.get(indexofAccount).setKey(Constant.dirKey + listAccountInfo.get(indexofAccount).getUser() + Constant.typeKeyPub);
+            //
+            writeFile.writeFile(listAccountInfo);
+            //
+            Session session = null;
+            connectSSH.connectSSH(listAccountInfo.get(indexofAccount), session);
+            // sau 2 tieng
+
+            Thread.sleep(7200000);
 
         }
 
     }
 
-    public void closeBrowser() {
-        webDriver.close();
-    }
 }

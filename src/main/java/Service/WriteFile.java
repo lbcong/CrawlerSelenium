@@ -5,6 +5,7 @@
  */
 package Service;
 
+import ConstantVariable.Constant;
 import Pojos.AccountInfo;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -19,7 +20,7 @@ public class WriteFile {
         try {
 
             //ghi file
-            FileOutputStream outputStream = new FileOutputStream("C:\\FileAccount\\Result.txt");
+            FileOutputStream outputStream = new FileOutputStream(Constant.dirFileResult);
             //OutputStreamWriter  BufferedWriter dung de ghi string
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, "UTF-8");
             BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
