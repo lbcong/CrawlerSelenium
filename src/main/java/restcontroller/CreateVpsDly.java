@@ -58,7 +58,7 @@ public class CreateVpsDly {
     public void initBinder() {
         try {
             //
-            System.setProperty(Constant.webDriverGoogle, Constant.dirDriverGoogle);
+            //System.setProperty(Constant.webDriverGoogle, Constant.dirDriverGoogle);
         } catch (Exception e) {
             e.printStackTrace();
         }

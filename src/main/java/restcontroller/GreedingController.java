@@ -48,7 +48,7 @@ public class GreedingController {
             //FirefoxProfile firefoxProfile = new FirefoxProfile();
             //WebDriver webDriver = new FirefoxDriver(ffBinary, firefoxProfile);
             ///app/.apt/usr/bin/
-            //System.setProperty("webdriver.chrome.driver", "/app/.apt/usr/bin/google-chrome");
+            System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
 
             //webDriver = new HtmlUnitDriver();
             webDriver = new ChromeDriver();

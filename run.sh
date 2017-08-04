@@ -1,1 +1,1 @@
-unzip chromedriver_linux64.zip
+chmod 777 chromedriver
