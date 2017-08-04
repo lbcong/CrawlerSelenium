@@ -30,7 +30,7 @@ public class GitHub {
             submit_button.click();
             return true;
         } catch (Exception e) {
-            e.getMessage();
+             System.out.println("LoginGitHub:"+e.getMessage()); 
         }
         return false;
 

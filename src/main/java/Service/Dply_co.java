@@ -63,7 +63,7 @@ public class Dply_co {
 
             return true;
         } catch (Exception e) {
-            e.getMessage();
+           System.out.println("CreateServer:"+e.getMessage()); 
         }
         return false;
     }
@@ -80,7 +80,7 @@ public class Dply_co {
 
             return true;
         } catch (Exception e) {
-            e.getMessage();
+            System.out.println("OpenDly:"+e.getMessage()); 
         }
         return false;
     }
@@ -93,6 +93,7 @@ public class Dply_co {
             String text = webDriver.findElement(By.xpath("//div[@class='col s12 grey darken-4 grey-text']")).getText();
             return text;
         } catch (Exception e) {
+            System.out.println("getIP:"+e.getMessage()); 
             return null;
         }
 
