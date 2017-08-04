@@ -8,6 +8,7 @@ restcontroller\Test.class
 Service\GitHub.class
 restcontroller\CreateVpsDly.class
 Service\GetInfoAccount.class
+restcontroller\CreateVpsDly$2.class
 Pojos\AccountInfo.class
 Service\ReadFile.class
 ConstantVariable\Constant.class

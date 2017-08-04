@@ -74,11 +74,11 @@ public class CreateVpsDly {
                 @Override
                 public void run() {
                     try {
-                        
+
                         List<String> s_list = readFile.readFile(Constant.dirFileAccount);
                         listAccountInfo = getInfoAccount.getListInfo(s_list);
                         NumberAccount = listAccountInfo.size();
-                        System.out.println("NumberAccount:" +NumberAccount);
+                        System.out.println("NumberAccount:" + NumberAccount);
                         //
                         FlagActive = true;
 
@@ -112,7 +112,7 @@ public class CreateVpsDly {
                 try {
                     createVPS(id_thread);
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println("loi:" + e.getMessage());
                 }
 
             }
@@ -132,8 +132,8 @@ public class CreateVpsDly {
         ChromeOptions options = new ChromeOptions();
         options.setBinary(Constant.binaryGoogle);
 
-        WebDriver webDriver = new ChromeDriver(options);
-
+        WebDriver webDriver = new ChromeDriver();
+       
         while (true) {
             if (!FlagActive) {
                 break;
@@ -146,15 +146,15 @@ public class CreateVpsDly {
                     listAccountInfo.get(indexofAccount).getPass(),
                     webDriver);
             //
-            System.out.println("getUser:" +listAccountInfo.get(indexofAccount).getUser());
+            System.out.println("getUser:" + listAccountInfo.get(indexofAccount).getUser());
             Thread.sleep(100);
             dply_co.CreateServer(webDriver);
-            System.out.println("CreateServer:" );
+            System.out.println("CreateServer:");
             //
             Thread.sleep(120000);
             //
             String rs = dply_co.getIP(webDriver);
-            System.out.println("getIP:" );
+            System.out.println("getIP:");
 
             if (rs == null) {
                 continue;

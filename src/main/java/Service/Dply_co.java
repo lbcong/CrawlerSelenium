@@ -60,7 +60,7 @@ public class Dply_co {
             Thread.sleep(2000);
             WebElement submit_button = webDriver.findElement(By.xpath("//button[@class='g-recaptcha ']"));
             Thread.sleep(2000);
-
+            submit_button.click();
             return true;
         } catch (Exception e) {
            System.out.println("CreateServer:"+e.getMessage()); 
