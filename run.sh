@@ -1,1 +1,1 @@
-tar -zxvf geckodriver-v0.18.0-linux64.tar.gz && tar -xvjf firefox-55.0b13.tar.bz2 && tar && tar -zxvf libs.tar.gz && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/libs
+tar -zxvf geckodriver-v0.18.0-linux64.tar.gz && apt-get install iceweasel && tar -xvjf firefox-55.0b13.tar.bz2
