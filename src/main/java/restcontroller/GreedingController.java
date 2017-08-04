@@ -15,6 +15,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -49,9 +50,10 @@ public class GreedingController {
             //WebDriver webDriver = new FirefoxDriver(ffBinary, firefoxProfile);
             ///app/.apt/usr/bin/
             System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
-
+            ChromeOptions options = new ChromeOptions();
+            options.setBinary(Constant.binaryGoogle);
             //webDriver = new HtmlUnitDriver();
-            webDriver = new ChromeDriver();
+            webDriver = new ChromeDriver(options);
             //testVideo();
             openTestSite();
             login("admin", "12345");
