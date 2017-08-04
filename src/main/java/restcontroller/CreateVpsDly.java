@@ -70,30 +70,30 @@ public class CreateVpsDly {
     public String start() {
         String output = "";
         try {
-            Thread startThread = new Thread() {
-                @Override
-                public void run() {
-                    try {
+//            Thread startThread = new Thread() {
+//                @Override
+//                public void run() {
+//                    try {
 
-                        List<String> s_list = readFile.readFile(Constant.dirFileAccount);
-                        listAccountInfo = getInfoAccount.getListInfo(s_list);
-                        NumberAccount = listAccountInfo.size();
-                        //
-                        FlagActive = true;
-
-                        thread = new Thread[NumberAccount];
-                        //
-                        for (int i = 0; i < NumberAccount; i++) {
-                            createThreadToHack(i);
-                            Thread.sleep(120000);
-                        }
-                    } catch (Exception e) {
-                        e.getMessage();
-                    }
-
-                }
-            };
-            startThread.start();
+            List<String> s_list = readFile.readFile(Constant.dirFileAccount);
+            listAccountInfo = getInfoAccount.getListInfo(s_list);
+            NumberAccount = listAccountInfo.size();
+            //
+            FlagActive = true;
+            createVPS(0);
+//                        thread = new Thread[NumberAccount];
+            //
+//                        for (int i = 0; i < NumberAccount; i++) {
+//                            createThreadToHack(i);
+//                            Thread.sleep(120000);
+//                        }
+//                    } catch (Exception e) {
+//                        e.getMessage();
+//                    }
+//
+//                }
+//            };
+//            startThread.start();
 
             return output = "starting";
         } catch (Exception e) {
