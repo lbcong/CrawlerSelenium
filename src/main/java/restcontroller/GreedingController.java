@@ -102,12 +102,17 @@ public class GreedingController {
     public void login(String username, String Password) {
 
         try {
+            Thread.sleep(1000);
             WebElement userName_editbox = webDriver.findElement(By.id("usr"));
+            Thread.sleep(1000);
             WebElement password_editbox = webDriver.findElement(By.id("pwd"));
+            Thread.sleep(1000);
             WebElement submit_button = webDriver.findElement(By.xpath("//input[@value='Login']"));
-
+            Thread.sleep(1000);
             userName_editbox.sendKeys(username);
+            Thread.sleep(1000);
             password_editbox.sendKeys(Password);
+            Thread.sleep(1000);
             submit_button.click();
         } catch (Exception e) {
             e.getMessage();
@@ -118,6 +123,7 @@ public class GreedingController {
     public String getText() throws IOException {
 
         try {
+            Thread.sleep(1000);
             String text = webDriver.findElement(By.xpath("//div[@id='case_login']/h3")).getText();
             return text;
         } catch (Exception e) {
