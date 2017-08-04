@@ -31,7 +31,9 @@ import org.springframework.web.bind.annotation.RestController;
 import static restcontroller.GreedingController.webDriver;
 import ConstantVariable.Constant;
 import java.io.File;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import static restcontroller.GreedingController.webDriver;
 
 @RestController
 public class CreateVpsDly {
@@ -121,10 +123,15 @@ public class CreateVpsDly {
 
         String output = "";
 
-        File pathToBinary = new File(Constant.binaryFirefox);
-        FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
-        FirefoxProfile firefoxProfile = new FirefoxProfile();
-        WebDriver webDriver = new FirefoxDriver(ffBinary, firefoxProfile);
+//        File pathToBinary = new File(Constant.binaryFirefox);
+//        FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
+//        FirefoxProfile firefoxProfile = new FirefoxProfile();
+//        WebDriver webDriver = new FirefoxDriver(ffBinary, firefoxProfile);
+        System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
+        ChromeOptions options = new ChromeOptions();
+        options.setBinary(Constant.binaryGoogle);
+
+        WebDriver webDriver = new ChromeDriver(options);
 
         while (true) {
             if (!FlagActive) {

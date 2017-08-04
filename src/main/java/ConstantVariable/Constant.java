@@ -9,8 +9,8 @@ public interface Constant {
 
     String typeKeyPub = ".pub";
     String typeKeyPPK = ".ppk";
-    String dirFileAccount = "/home/FileAccount/Account.txt";
-    String dirFileResult = "/home/FileAccount/Result.txt";
+    String dirFileAccount = "/app/Account.txt";
+    String dirFileResult = "/app/Result.txt";
     String dirKey = "/home/FileAccount/Key/";
     //
     String webDriverGoogle = "webdriver.chrome.driver";
