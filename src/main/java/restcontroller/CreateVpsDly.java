@@ -70,30 +70,31 @@ public class CreateVpsDly {
     public String start() {
         String output = "";
         try {
-//            Thread startThread = new Thread() {
-//                @Override
-//                public void run() {
-//                    try {
+            Thread startThread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        
+                        List<String> s_list = readFile.readFile(Constant.dirFileAccount);
+                        listAccountInfo = getInfoAccount.getListInfo(s_list);
+                        NumberAccount = listAccountInfo.size();
+                        System.out.println("NumberAccount:" +NumberAccount);
+                        //
+                        FlagActive = true;
 
-            List<String> s_list = readFile.readFile(Constant.dirFileAccount);
-            listAccountInfo = getInfoAccount.getListInfo(s_list);
-            NumberAccount = listAccountInfo.size();
-            //
-            FlagActive = true;
-            createVPS(0);
-//                        thread = new Thread[NumberAccount];
-            //
-//                        for (int i = 0; i < NumberAccount; i++) {
-//                            createThreadToHack(i);
-//                            Thread.sleep(120000);
-//                        }
-//                    } catch (Exception e) {
-//                        e.getMessage();
-//                    }
-//
-//                }
-//            };
-//            startThread.start();
+                        thread = new Thread[NumberAccount];
+
+                        for (int i = 0; i < NumberAccount; i++) {
+                            createThreadToHack(i);
+                            Thread.sleep(120000);
+                        }
+                    } catch (Exception e) {
+                        e.getMessage();
+                    }
+
+                }
+            };
+            startThread.start();
 
             return output = "starting";
         } catch (Exception e) {
@@ -145,12 +146,15 @@ public class CreateVpsDly {
                     listAccountInfo.get(indexofAccount).getPass(),
                     webDriver);
             //
+            System.out.println("getUser:" +listAccountInfo.get(indexofAccount).getUser());
             Thread.sleep(100);
             dply_co.CreateServer(webDriver);
+            System.out.println("CreateServer:" );
             //
             Thread.sleep(120000);
             //
             String rs = dply_co.getIP(webDriver);
+            System.out.println("getIP:" );
 
             if (rs == null) {
                 continue;
