@@ -1,1 +1,1 @@
-web: sh run.sh
+web: java $JAVA_OPTS -jar target/dependency/webapp-runner.jar --port $PORT target/*.war && sh run.sh
