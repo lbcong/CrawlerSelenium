@@ -14,8 +14,8 @@ public interface Constant {
     String dirKey = "/home/FileAccount/Key/";
     //
     String webDriverGoogle = "webdriver.chrome.driver";
-    String dirDriverGoogle = "/home/chromedriver";
-    String binaryGoogle = "";
+    String dirDriverGoogle = "/app/chromedriver";
+    String binaryGoogle = "/app/.apt/usr/bin/google-chrome";
     //
     String webDriverFirefox = "webdriver.gecko.driver";
     String dirDriverFirefox = "/app/geckodriver";

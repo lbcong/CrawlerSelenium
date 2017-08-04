@@ -43,15 +43,15 @@ public class GreedingController {
     public String selenium() {
         String output = "";
         try {
-            File pathToBinary = new File(Constant.binaryFirefox);
-            FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
-            FirefoxProfile firefoxProfile = new FirefoxProfile();
-            WebDriver webDriver = new FirefoxDriver(ffBinary, firefoxProfile);
+            //File pathToBinary = new File(Constant.binaryFirefox);
+            //FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
+            //FirefoxProfile firefoxProfile = new FirefoxProfile();
+            //WebDriver webDriver = new FirefoxDriver(ffBinary, firefoxProfile);
             ///app/.apt/usr/bin/
             //System.setProperty("webdriver.chrome.driver", "/app/.apt/usr/bin/google-chrome");
 
             //webDriver = new HtmlUnitDriver();
-            //webDriver = new ChromeDriver();
+            webDriver = new ChromeDriver();
             //testVideo();
             openTestSite();
             login("admin", "12345");
