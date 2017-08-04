@@ -128,12 +128,12 @@ public class CreateVpsDly {
 //        FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
 //        FirefoxProfile firefoxProfile = new FirefoxProfile();
 //        WebDriver webDriver = new FirefoxDriver(ffBinary, firefoxProfile);
-        System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
+        System.setProperty(Constant.webDriverGoogle, Constant.dirDriverGoogle);
         ChromeOptions options = new ChromeOptions();
         options.setBinary(Constant.binaryGoogle);
 
-        WebDriver webDriver = new ChromeDriver();
-       
+        WebDriver webDriver = new ChromeDriver(options);
+
         while (true) {
             if (!FlagActive) {
                 break;
