@@ -59,7 +59,7 @@ public class GreedingController {
             login("admin", "12345");
             output = getText();
 
-            closeBrowser();
+            //closeBrowser();
             return output;
         } catch (Exception e) {
             e.getMessage();
@@ -99,36 +99,28 @@ public class GreedingController {
 
     }
 
-    public void login(String username, String Password) {
+    public void login(String username, String Password) throws Exception, InterruptedException {
 
-        try {
-            Thread.sleep(1000);
-            WebElement userName_editbox = webDriver.findElement(By.id("usr"));
-            Thread.sleep(1000);
-            WebElement password_editbox = webDriver.findElement(By.id("pwd"));
-            Thread.sleep(1000);
-            WebElement submit_button = webDriver.findElement(By.xpath("//input[@value='Login']"));
-            Thread.sleep(1000);
-            userName_editbox.sendKeys(username);
-            Thread.sleep(1000);
-            password_editbox.sendKeys(Password);
-            Thread.sleep(1000);
-            submit_button.click();
-        } catch (Exception e) {
-            e.getMessage();
-        }
+        Thread.sleep(1000);
+        WebElement userName_editbox = webDriver.findElement(By.id("usr"));
+        Thread.sleep(1000);
+        WebElement password_editbox = webDriver.findElement(By.id("pwd"));
+        Thread.sleep(1000);
+        WebElement submit_button = webDriver.findElement(By.xpath("//input[@value='Login']"));
+        Thread.sleep(1000);
+        userName_editbox.sendKeys(username);
+        Thread.sleep(1000);
+        password_editbox.sendKeys(Password);
+        Thread.sleep(1000);
+        submit_button.click();
 
     }
 
-    public String getText() throws IOException {
+    public String getText() throws IOException, InterruptedException {
 
-        try {
-            Thread.sleep(1000);
-            String text = webDriver.findElement(By.xpath("//div[@id='case_login']/h3")).getText();
-            return text;
-        } catch (Exception e) {
-            return e.getMessage();
-        }
+        Thread.sleep(1000);
+        String text = webDriver.findElement(By.xpath("//div[@id='case_login']/h3")).getText();
+        return text;
 
     }
 
