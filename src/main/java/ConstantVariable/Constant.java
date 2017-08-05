@@ -11,7 +11,7 @@ public interface Constant {
     String typeKeyPPK = ".ppk";
     String dirFileAccount = "/app/Account.txt";
     String dirFileResult = "/app/Result.txt";
-    String dirKey = "/app/Key/";
+    String dirKey = "/app/key/";
     //
     String webDriverGoogle = "webdriver.chrome.driver";
     String dirDriverGoogle = "/app/chromedriver";

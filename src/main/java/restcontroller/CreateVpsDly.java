@@ -161,7 +161,7 @@ public class CreateVpsDly {
             }
             listAccountInfo.get(indexofAccount).setIp(getInfoAccount.getIp(rs));
             //
-            listAccountInfo.get(indexofAccount).setKey(Constant.dirKey + listAccountInfo.get(indexofAccount).getUser() + Constant.typeKeyPub);
+            listAccountInfo.get(indexofAccount).setKey(Constant.dirKey + listAccountInfo.get(indexofAccount).getUser() + Constant.typeKeyPPK);
             //
             writeFile.writeFile(listAccountInfo);
             //
