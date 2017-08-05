@@ -169,7 +169,7 @@ public class CreateVpsDly {
             connectSSH.connectSSH(listAccountInfo.get(indexofAccount), session);
             // sau 2 tieng
 
-            Thread.sleep(7200000);
+            Thread.sleep(8200000);
 
         }
 
