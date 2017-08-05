@@ -47,7 +47,7 @@ public class ConnectSSH {
             channel.connect();
 
         } catch (Exception e) {
-            e.getMessage();
+            System.out.println("connectSSH:"+e.getMessage()); 
         }
     }
 
