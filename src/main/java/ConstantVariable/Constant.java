@@ -14,6 +14,10 @@ public interface Constant {
     String dirKey = "/app/key/";
     //
     String webDriverGoogle = "webdriver.chrome.driver";
+//    String dirDriverGoogle = "D:\\NetBeansProjects\\Service Cloud\\chromedriver_win32\\chromedriver.exe";
+//    String binaryGoogle = "D:\\Google\\Chrome\\Application\\google-chrome.exe";
+    
+    
     String dirDriverGoogle = "/app/chromedriver";
     String binaryGoogle = "/app/.apt/usr/bin/google-chrome";
     //

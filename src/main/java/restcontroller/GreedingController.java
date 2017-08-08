@@ -68,15 +68,32 @@ public class GreedingController {
 
     }
 
-    @RequestMapping(value = "/openbrowserGG", method = RequestMethod.GET)
-    public String seleniumGoogle() {
+    @RequestMapping(value = "/video/{url}", method = RequestMethod.GET)
+    public String seleniumGoogle(
+            @PathVariable("url") String url) {
         String output = "";
         try {
+            Thread startThread = new Thread() {
+                @Override
+                public void run() {
+                    try {
 
-            webDriver = new ChromeDriver();
+                        System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
+                        ChromeOptions options = new ChromeOptions();
+                        options.setBinary(Constant.binaryGoogle);
 
-            testVideo();
-            // closeBrowser();
+                        webDriver = new ChromeDriver(options);
+
+                        testVideo(url);
+
+                    } catch (Exception e) {
+                        e.getMessage();
+                    }
+
+                }
+            };
+            startThread.start();
+
             return "";
         } catch (Exception e) {
             e.getMessage();
@@ -85,16 +102,22 @@ public class GreedingController {
 
     }
 
-    public void testVideo() throws InterruptedException {
+    public void testVideo(String url) throws InterruptedException {
 
-        try {
-            //FlashObjectWebDriver flashApp = new FlashObjectWebDriver(webDriver, "movie_player");
+        while (true) {
 
-            webDriver.get("https://www.youtube.com/watch?v=sYbd4jDn-kA");
-            Thread.sleep(8000);
+            try {
 
-        } catch (Exception e) {
-            e.getMessage();
+                webDriver.get(url);
+                Thread.sleep(124000);
+                WebElement video = webDriver.findElement(By.id("movie_player"));
+                System.out.println("video : " + url);
+                video.click();
+                System.out.println("click : " + url);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+
+            }
         }
 
     }
