@@ -23,6 +23,12 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>thoi gian cua video</td>
+                        <td>
+                            <input name="time" placeholder="thoi gian cua video" type="number"/>
+                        </td>
+                    </tr>
+                    <tr>
 
                         <td colspan="2">  <input type="submit" value="submit"/></td>
                     </tr>

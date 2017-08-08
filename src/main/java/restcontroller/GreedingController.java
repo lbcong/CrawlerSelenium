@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class GreedingController {
 
     public static WebDriver webDriver = null;
@@ -65,65 +65,6 @@ public class GreedingController {
         } catch (Exception e) {
             e.getMessage();
             return "loi : " + e.getMessage();
-        }
-
-    }
-
-    @RequestMapping(value = "/video", method = RequestMethod.GET)
-    public String inputvideo() {
-
-        return "login";
-    }
-
-    @RequestMapping(value = "/video", method = RequestMethod.POST)
-    public String seleniumGoogle(
-            @RequestParam(value = "url", required = true) String url) {
-        String output = "";
-        try {
-            Thread startThread = new Thread() {
-                @Override
-                public void run() {
-                    try {
-
-                        System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
-                        ChromeOptions options = new ChromeOptions();
-                        options.setBinary(Constant.binaryGoogle);
-
-                        webDriver = new ChromeDriver(options);
-
-                        testVideo(url);
-
-                    } catch (Exception e) {
-                        e.getMessage();
-                    }
-
-                }
-            };
-            startThread.start();
-
-        } catch (Exception e) {
-            e.getMessage();
-            return "loi : " + e.getMessage();
-        }
-        return "login";
-    }
-
-    public void testVideo(String url) throws InterruptedException {
-
-        while (true) {
-
-            try {
-
-                webDriver.get(url);
-                Thread.sleep(124000);
-                WebElement video = webDriver.findElement(By.id("movie_player"));
-                System.out.println("video : " + url);
-                video.click();
-                System.out.println("click : " + url);
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-
-            }
         }
 
     }
