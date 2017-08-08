@@ -76,11 +76,11 @@ public class BuffViewYouTube {
         while (true) {
             try {
                 WebDriver webDriver = new ChromeDriver(options);
-
+                System.out.println("video1 : " + url);
                 webDriver.get(url);
                 Thread.sleep((timeout * 60 + 5) * 1000);
 //                WebElement video = webDriver.findElement(By.id("movie_player"));
-                System.out.println("video : " + url);
+                System.out.println("video2 : " + url);
 //                video.click();
 //                System.out.println("click : " + url);
                 webDriver.quit();
