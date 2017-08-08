@@ -78,9 +78,9 @@ public class BuffViewYouTube {
                 WebDriver webDriver = new ChromeDriver(options);
 
                 webDriver.get(url);
-                Thread.sleep((timeout*60 + 5) * 1000);
+                Thread.sleep((timeout * 60 + 5) * 1000);
 //                WebElement video = webDriver.findElement(By.id("movie_player"));
-//                System.out.println("video : " + url);
+                System.out.println("video : " + url);
 //                video.click();
 //                System.out.println("click : " + url);
                 webDriver.quit();
