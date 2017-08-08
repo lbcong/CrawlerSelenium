@@ -35,13 +35,13 @@ public class BuffViewYouTube {
 
     public static WebDriver webDriver = null;
 
-    @RequestMapping(value = "/video", method = RequestMethod.GET)
+    @RequestMapping(value = "/inputvideo", method = RequestMethod.GET)
     public String inputvideo() {
 
         return "login";
     }
 
-    @RequestMapping(value = "/video", method = RequestMethod.POST)
+    @RequestMapping(value = "/video", method = RequestMethod.GET)
     public String seleniumGoogle(
             @RequestParam(value = "url", required = true) String url,
             @RequestParam(value = "time", required = true) int time) {
@@ -76,6 +76,7 @@ public class BuffViewYouTube {
         while (true) {
             try {
                 WebDriver webDriver = new ChromeDriver(options);
+                //WebDriver webDriver = new ChromeDriver();
                 System.out.println("video1 : " + url);
                 webDriver.get(url);
                 Thread.sleep((timeout * 60 + 5) * 1000);

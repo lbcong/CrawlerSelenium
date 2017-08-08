@@ -3,6 +3,7 @@ restcontroller\GreedingController.class
 Service\Dply_co.class
 restcontroller\BuffViewYouTube$1.class
 restcontroller\CreateVpsDly$1.class
+restcontroller\Index.class
 Service\WriteFile.class
 restcontroller\BuffViewYouTube.class
 Bean\SpringConfig.class

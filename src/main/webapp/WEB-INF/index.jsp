@@ -11,7 +11,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <s:url value="video" var="video"/>
+        <s:url value="inputvideo" var="video"/>
         <s:url value="start" var="miner"/>
         <a href="${video}"> buff view</a>
         <br/>

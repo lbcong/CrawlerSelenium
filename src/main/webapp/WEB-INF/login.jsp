@@ -12,7 +12,7 @@
     <body>
         <s:url value="video" var="video"/>
         <h1>login</h1>
-        <form:form action="${video}" method="post" >
+        <form:form action="${video}" method="get" >
             <table border="1" width="1" cellspacing="1">
 
                 <tbody>
