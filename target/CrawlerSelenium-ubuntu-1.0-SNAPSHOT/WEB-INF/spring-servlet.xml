@@ -20,14 +20,21 @@
                 http://www.springframework.org/schema/mvc 
                 http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
                 
-   >
+>
 
     
     <context:component-scan base-package="restcontroller"></context:component-scan>
-     <context:component-scan base-package="Bean"></context:component-scan>
-     <context:component-scan base-package="Service"></context:component-scan>
-      
-   
+    <context:component-scan base-package="Bean"></context:component-scan>
+    <context:component-scan base-package="Service"></context:component-scan>
+
+    
+ 
+    
+    
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
     <context:annotation-config/>
     <mvc:annotation-driven />

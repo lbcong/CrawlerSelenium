@@ -21,6 +21,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +30,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class GreedingController {
 
     public static WebDriver webDriver = null;
@@ -68,9 +69,15 @@ public class GreedingController {
 
     }
 
-    @RequestMapping(value = "/video/{url}", method = RequestMethod.GET)
+    @RequestMapping(value = "/video", method = RequestMethod.GET)
+    public String inputvideo() {
+
+        return "login";
+    }
+
+    @RequestMapping(value = "/video", method = RequestMethod.POST)
     public String seleniumGoogle(
-            @PathVariable("url") String url) {
+            @RequestParam(value = "url", required = true) String url) {
         String output = "";
         try {
             Thread startThread = new Thread() {
@@ -94,12 +101,11 @@ public class GreedingController {
             };
             startThread.start();
 
-            return "";
         } catch (Exception e) {
             e.getMessage();
             return "loi : " + e.getMessage();
         }
-
+        return "login";
     }
 
     public void testVideo(String url) throws InterruptedException {
