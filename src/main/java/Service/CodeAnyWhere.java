@@ -24,7 +24,7 @@ public class CodeAnyWhere {
         try {
             Thread.sleep(2000);
             webDriver.navigate().to("https://codeanywhere.com");
-            Thread.sleep(2000);
+            Thread.sleep(5000);
             WebElement login = webDriver.findElement(By.xpath("//a[@class='navigation-link login-toggle']"));
 
             Thread.sleep(1000);
@@ -55,7 +55,7 @@ public class CodeAnyWhere {
         try {
             Actions myAction = new Actions(webDriver);
             Thread.sleep(3000);
-            WebElement element = webDriver.findElement(By.xpath("//div[@id='expanded connection devbox gtnode']//*[@class='gtnode-inner']//*[@class='arrow-icon']"));
+            WebElement element = webDriver.findElement(By.xpath("//div[@id='a65b435d2e1de8071bf54197be523db0']//*[@class='gtnode-inner']//*[@class='arrow-icon']"));
             Thread.sleep(2000);
 
             myAction.contextClick(element).build().perform();

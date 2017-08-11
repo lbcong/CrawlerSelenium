@@ -69,7 +69,10 @@ public class KeepLiveCodeanywhere {
         try {
             codeAnyWhere.LoginCodeAnyWhere(user, pass, webDriver);
             String info = codeAnyWhere.getInfo(webDriver);
-            uploadServices.uploadFileTxtToSFtpServer(info, user);
+            if (info != null) {
+                uploadServices.uploadFileTxtToSFtpServer(info, user);
+            }
+
         } catch (Exception e) {
             System.out.println("openbrowser : " + e.getMessage());
         }
