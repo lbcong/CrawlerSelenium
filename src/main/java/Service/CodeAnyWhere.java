@@ -5,9 +5,12 @@
  */
 package Service;
 
+import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,6 +23,7 @@ public class CodeAnyWhere {
             webDriver.navigate().to("https://codeanywhere.com");
             Thread.sleep(2000);
             WebElement login = webDriver.findElement(By.xpath("//a[@class='navigation-link login-toggle']"));
+
             Thread.sleep(1000);
             login.click();
             Thread.sleep(2000);
@@ -41,5 +45,28 @@ public class CodeAnyWhere {
         }
         return false;
 
+    }
+
+    public String getInfo(WebDriver webDriver) {
+
+        try {
+            Actions myAction = new Actions(webDriver);
+            Thread.sleep(3000);
+            WebElement element = webDriver.findElement(By.xpath("//div[@id='expanded connection devbox gtnode']//*[@class='gtnode-inner']//*[@class='arrow-icon']"));
+            Thread.sleep(2000);
+
+            myAction.contextClick(element).build().perform();
+            Actions myAction1 = new Actions(webDriver);
+            myAction1.moveByOffset(52, 126).build().perform();
+            Thread.sleep(1000);
+            myAction1.click().build().perform();
+            Thread.sleep(1000);
+            WebElement element2 = webDriver.findElement(By.xpath("//div[@class='markdown-body']/ul/li/a/code"));
+            return element2.getText();
+
+        } catch (Exception e) {
+            System.out.println("getInfo:" + e.getMessage());
+        }
+        return null;
     }
 }
