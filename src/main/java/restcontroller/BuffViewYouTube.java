@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class BuffViewYouTube {
 
-    public static WebDriver webDriver = null;
+  
 
     @RequestMapping(value = "/inputvideo", method = RequestMethod.GET)
     public String inputvideo() {

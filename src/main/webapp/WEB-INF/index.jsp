@@ -13,11 +13,18 @@
         <h1>Hello World!</h1>
         <s:url value="inputvideo" var="video"/>
         <s:url value="start" var="miner"/>
+        <s:url value="loginCodeAny" var="loginCodeAny"/>
         <a href="${video}"> buff view</a>
         <br/>
         <br/>
         <br/>
         <br/>
         <a href="${miner}"> miner</a>
+         <br/>
+        <br/>
+        <br/>
+        <br/>
+        <a href="${loginCodeAny}"> loginCodeAny</a>
+        
     </body>
 </html>
