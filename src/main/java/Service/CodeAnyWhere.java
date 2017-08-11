@@ -34,9 +34,10 @@ public class CodeAnyWhere {
             password.sendKeys(passw);
             Thread.sleep(2000);
             submit_button.click();
+            System.out.println("Login: done");
             return true;
         } catch (Exception e) {
-            System.out.println("LoginGitHub:" + e.getMessage());
+            System.out.println("Login:" + e.getMessage());
         }
         return false;
 
