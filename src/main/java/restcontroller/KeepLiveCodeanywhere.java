@@ -7,6 +7,7 @@ package restcontroller;
 
 import ConstantVariable.Constant;
 import Service.CodeAnyWhere;
+import Service.UploadServices;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class KeepLiveCodeanywhere {
 
+    @Autowired
+    UploadServices uploadServices;
     @Autowired
     CodeAnyWhere codeAnyWhere;
 
@@ -62,10 +65,11 @@ public class KeepLiveCodeanywhere {
         System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
         //WebDriver webDriver = new ChromeDriver(options);
         WebDriver webDriver = new ChromeDriver();
-     
+
         try {
             codeAnyWhere.LoginCodeAnyWhere(user, pass, webDriver);
-            codeAnyWhere.getInfo(webDriver);
+            String info = codeAnyWhere.getInfo(webDriver);
+            uploadServices.uploadFileTxtToSFtpServer(info, user);
         } catch (Exception e) {
             System.out.println("openbrowser : " + e.getMessage());
         }
