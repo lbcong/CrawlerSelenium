@@ -71,6 +71,7 @@ public class KeepLiveCodeanywhere {
             String info = codeAnyWhere.getInfo(webDriver);
             if (info != null) {
                 uploadServices.uploadFileTxtToSFtpServer(info, user);
+                System.out.println("upload : done "+info);
             }
 
         } catch (Exception e) {
