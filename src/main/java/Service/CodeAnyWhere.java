@@ -54,7 +54,7 @@ public class CodeAnyWhere {
 
         try {
             Actions myAction = new Actions(webDriver);
-            Thread.sleep(120000);
+            Thread.sleep(180000);
             WebElement element = webDriver.findElement(By.xpath("//div[@id='a65b435d2e1de8071bf54197be523db0']//*[@class='gtnode-inner']//*[@class='arrow-icon']"));
             Thread.sleep(4000);
 

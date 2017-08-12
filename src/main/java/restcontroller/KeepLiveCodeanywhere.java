@@ -64,7 +64,7 @@ public class KeepLiveCodeanywhere {
         options.setBinary(Constant.binaryGoogle);
         System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
         WebDriver webDriver = new ChromeDriver(options);
-        //WebDriver webDriver = new ChromeDriver();
+//        WebDriver webDriver = new ChromeDriver();
 
         try {
             codeAnyWhere.LoginCodeAnyWhere(user, pass, webDriver);
