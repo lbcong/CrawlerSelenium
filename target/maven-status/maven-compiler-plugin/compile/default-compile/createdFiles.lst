@@ -1,10 +1,12 @@
 Service\ConnectSSH.class
 restcontroller\GreedingController.class
+restcontroller\KeepCodenvy.class
 restcontroller\Index.class
 restcontroller\BuffViewYouTube.class
 restcontroller\KeepLiveCodeanywhere.class
 Bean\SpringConfig.class
 Service\CodeAnyWhere.class
+restcontroller\KeepCodenvy$1.class
 Service\GitHub.class
 restcontroller\CreateVpsDly.class
 restcontroller\Excutecommand.class
@@ -13,6 +15,7 @@ restcontroller\BuffViewYouTube$1.class
 restcontroller\CreateVpsDly$1.class
 Service\WriteFile.class
 ConstantVariable\ConstantVariable.class
+Service\Codenvy.class
 restcontroller\Test.class
 Service\GetInfoAccount.class
 Service\UploadServices.class

@@ -14,6 +14,7 @@
         <s:url value="inputvideo" var="video"/>
         <s:url value="start" var="miner"/>
         <s:url value="loginCodeAny" var="loginCodeAny"/>
+         <s:url value="loginCodenvy" var="loginCodenvy"/>
         <a href="${video}"> buff view</a>
         <br/>
         <br/>
@@ -25,6 +26,11 @@
         <br/>
         <br/>
         <a href="${loginCodeAny}"> loginCodeAny</a>
+         <br/>
+        <br/>
+        <br/>
+        <br/>
+        <a href="${loginCodenvy}"> loginCodenvy</a>
         
     </body>
 </html>

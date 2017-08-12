@@ -16,13 +16,13 @@ public interface Constant {
     String webDriverGoogle = "webdriver.chrome.driver";
 //    String dirDriverGoogle = "D:\\NetBeansProjects\\Service Cloud\\chromedriver_win32\\chromedriver.exe";
 //    String binaryGoogle = "D:\\Google\\Chrome\\Application\\google-chrome.exe";
-//    
     
+//    
     String dirDriverGoogle = "/app/chromedriver";
     String binaryGoogle = "/app/.apt/usr/bin/google-chrome";
     //
     String webDriverFirefox = "webdriver.gecko.driver";
-    String dirDriverFirefox = "/app/geckodriver";
-    String binaryFirefox = "/app/vendor/firefox";
+    String dirDriverFirefox = "D:\\NetBeansProjects\\Service Cloud\\geckodriver.exe";
+    String binaryFirefox = "E:\\Soft\\FirefoxPortable\\App\\Firefox64\\firefox.exe";
     
 }
