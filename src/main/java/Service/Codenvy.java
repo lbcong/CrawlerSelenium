@@ -38,7 +38,7 @@ public class Codenvy {
             webDriver.navigate().to("https://codenvy.io/dashboard/#/ide/" + temp + "/work1");
             
             Thread.sleep(180000);
-            System.out.println("spam : done");
+            System.out.println("spam https://codenvy.io/dashboard/#/ide/" + temp + "/work1 : done");
             while (true) {
                 Thread.sleep(2000);
                 Actions myAction = new Actions(webDriver);
