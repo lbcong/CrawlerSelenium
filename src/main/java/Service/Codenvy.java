@@ -35,12 +35,14 @@ public class Codenvy {
             Thread.sleep(2000);
             submit_button.click();
             System.out.println("Login: done");
+             Thread.sleep(5000);
             webDriver.navigate().to("https://codenvy.io/dashboard/#/ide/" + temp + "/work1");
             
             Thread.sleep(180000);
             System.out.println("spam https://codenvy.io/dashboard/#/ide/" + temp + "/work1 : done");
             while (true) {
                 Thread.sleep(2000);
+                System.out.println("run spam");
                 Actions myAction = new Actions(webDriver);
                 Thread.sleep(1000);
                 myAction.moveByOffset(794, 200).build().perform();
