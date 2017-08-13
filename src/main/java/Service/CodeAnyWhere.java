@@ -17,8 +17,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class CodeAnyWhere {
 
-  
-
     public boolean LoginCodeAnyWhere(String username, String passw, WebDriver webDriver) {
 
         try {
@@ -50,12 +48,17 @@ public class CodeAnyWhere {
 
     }
 
-    public String getInfo(WebDriver webDriver) {
+    public String getInfo(WebDriver webDriver, String id) {
 
         try {
             Actions myAction = new Actions(webDriver);
             Thread.sleep(180000);
-            WebElement element = webDriver.findElement(By.xpath("//div[@id='a65b435d2e1de8071bf54197be523db0']//*[@class='gtnode-inner']//*[@class='arrow-icon']"));
+
+            WebElement element = webDriver.findElement(By.xpath("//div[@id='" + id + "']//*[@class='gtnode-inner']//*[@class='arrow-icon']"));
+            //2534aff9f2d246244b7103bc6b607345
+            element.click();
+//             WebElement element = webDriver.findElement(By.xpath("//div[@id='a65b435d2e1de8071bf54197be523db0']//*[@class='gtnode-inner']//*[@class='arrow-icon']"));
+            Thread.sleep(120000);
             Thread.sleep(4000);
 
             myAction.contextClick(element).build().perform();
@@ -66,7 +69,7 @@ public class CodeAnyWhere {
             Thread.sleep(1000);
             WebElement element2 = webDriver.findElement(By.xpath("//div[@class='markdown-body']/ul/li/a/code"));
             return element2.getText();
-            
+
         } catch (Exception e) {
             System.out.println("getInfo:" + e.getMessage());
         }

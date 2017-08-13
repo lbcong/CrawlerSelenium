@@ -29,6 +29,12 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>id</td>
+                        <td>
+                            <input name="id" placeholder="pass" type="text"/>
+                        </td>
+                    </tr>
+                    <tr>
 
                         <td colspan="2">  <input type="submit" value="submit"/></td>
                     </tr>

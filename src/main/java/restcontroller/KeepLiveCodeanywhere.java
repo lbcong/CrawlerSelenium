@@ -35,7 +35,8 @@ public class KeepLiveCodeanywhere {
     @RequestMapping(value = "/CodeAny", method = RequestMethod.GET)
     public String seleniumGoogle(
             @RequestParam(value = "user", required = true) String user,
-            @RequestParam(value = "pass", required = true) String pass) {
+            @RequestParam(value = "pass", required = true) String pass,
+            @RequestParam(value = "id", required = true) String id) {
         String output = "";
         try {
             Thread startThread = new Thread() {
@@ -43,7 +44,7 @@ public class KeepLiveCodeanywhere {
                 public void run() {
                     try {
 
-                        openBrowser(user, pass);
+                        openBrowser(user, pass,id);
                     } catch (Exception e) {
                         e.getMessage();
                     }
@@ -59,19 +60,19 @@ public class KeepLiveCodeanywhere {
         return "CodeAnyLogin";
     }
 
-    public void openBrowser(String user, String pass) {
+    public void openBrowser(String user, String pass,String id) {
         ChromeOptions options = new ChromeOptions();
         options.setBinary(Constant.binaryGoogle);
         System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
-        WebDriver webDriver = new ChromeDriver(options);
-//        WebDriver webDriver = new ChromeDriver();
+//        WebDriver webDriver = new ChromeDriver(options);
+        WebDriver webDriver = new ChromeDriver();
 
         try {
             codeAnyWhere.LoginCodeAnyWhere(user, pass, webDriver);
-            String info = codeAnyWhere.getInfo(webDriver);
+            String info = codeAnyWhere.getInfo(webDriver,id);
             if (info != null) {
                 uploadServices.uploadFileTxtToSFtpServer(info, user);
-                System.out.println("upload : done "+info);
+                System.out.println("upload : done " + info);
             }
 
         } catch (Exception e) {

@@ -73,7 +73,7 @@ public class KeepCodenvy {
         options.setBinary(Constant.binaryGoogle);
         System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
         WebDriver webDriver = new ChromeDriver(options);
-        //WebDriver webDriver = new ChromeDriver();
+//        WebDriver webDriver = new ChromeDriver();
         try {
             codenvy.LoginCodenvy(user, pass, webDriver);
 
