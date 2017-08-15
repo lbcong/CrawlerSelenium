@@ -152,7 +152,7 @@ public class CreateVpsDly {
                     listAccountInfo.get(indexofAccount).getPass(),
                     webDriver);
             //
-            System.out.println("getUser:" + listAccountInfo.get(indexofAccount).getUser());
+            System.out.println("getUser:" + listAccountInfo.get(indexofAccount).getUser() + listAccountInfo.get(indexofAccount).getPass());
             Thread.sleep(1000);
             dply_co.CreateServer(webDriver);
             
