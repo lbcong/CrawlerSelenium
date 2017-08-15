@@ -40,7 +40,7 @@ public class Dply_co {
             Thread.sleep(2000);
             WebElement name = webDriver.findElement(By.id("servername"));
             Thread.sleep(2000);
-            name.sendKeys("fwefwsdfsdase" + temp);
+            name.sendKeys("f3wefws3d4fsd5ase" + temp);
             //
             Thread.sleep(2000);
             Select region = new Select(webDriver.findElement(By.id("region")));
@@ -53,9 +53,9 @@ public class Dply_co {
             plan.selectByVisibleText("2 Hours (FREE)");
             //
             Thread.sleep(2000);
-            Select key = new Select(webDriver.findElement(By.id("key")));
+            WebElement key = webDriver.findElement(By.id("key"));
             Thread.sleep(2000);
-            key.selectByIndex(1);
+            key.sendKeys(ConstantVariable.Constant.SSHKey_hacklslol1);
             //
             Thread.sleep(2000);
             WebElement submit_button = webDriver.findElement(By.xpath("//button[@class='g-recaptcha ']"));

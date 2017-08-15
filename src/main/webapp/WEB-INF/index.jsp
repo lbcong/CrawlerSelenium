@@ -12,7 +12,7 @@
     <body>
         <h1>Hello World!</h1>
         <s:url value="inputvideo" var="video"/>
-        <s:url value="start" var="miner"/>
+        <s:url value="miner" var="miner"/>
         <s:url value="loginCodeAny" var="loginCodeAny"/>
          <s:url value="loginCodenvy" var="loginCodenvy"/>
         <a href="${video}"> buff view</a>

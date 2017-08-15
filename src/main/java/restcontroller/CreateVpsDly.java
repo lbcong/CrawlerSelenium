@@ -13,29 +13,26 @@ import Service.GitHub;
 import Service.ReadFile;
 import Service.WriteFile;
 import com.jcraft.jsch.Session;
-import java.util.ArrayList;
+
 import java.util.List;
 import javax.annotation.PostConstruct;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import static restcontroller.GreedingController.webDriver;
-import ConstantVariable.Constant;
-import java.io.File;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import static restcontroller.GreedingController.webDriver;
 
-@RestController
+import ConstantVariable.Constant;
+
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+@Controller
 public class CreateVpsDly {
 
     @Autowired
@@ -59,35 +56,44 @@ public class CreateVpsDly {
     @PostConstruct
     public void initBinder() {
         try {
-            //
-            //System.setProperty(Constant.webDriverGoogle, Constant.dirDriverGoogle);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    
+    @RequestMapping(value = "/miner", method = RequestMethod.GET)
+    public String inputvideo() {
+
+        return "Miner";
+    }
+    
 
     @RequestMapping(value = "/start", method = RequestMethod.GET)
-    public String start() {
+    public String start(
+            @RequestParam(value = "index", required = true) int index) {
         String output = "";
         try {
             Thread startThread = new Thread() {
                 @Override
                 public void run() {
                     try {
-
+                        //
                         List<String> s_list = readFile.readFile(Constant.dirFileAccount);
+                        //
                         listAccountInfo = getInfoAccount.getListInfo(s_list);
+                        //
                         NumberAccount = listAccountInfo.size();
+                        //
                         System.out.println("NumberAccount:" + NumberAccount);
                         //
                         FlagActive = true;
-
+                        //
                         thread = new Thread[NumberAccount];
 
-                        for (int i = 0; i < NumberAccount; i++) {
-                            createThreadToHack(i);
-                            Thread.sleep(120000);
-                        }
+//                        for (int i = 0; i < NumberAccount; i++) {
+                        createThreadToHack(index);
+                        Thread.sleep(120000);
+//                        }
                     } catch (Exception e) {
                         e.getMessage();
                     }
@@ -96,7 +102,7 @@ public class CreateVpsDly {
             };
             startThread.start();
 
-            return output = "starting";
+            return output = "Miner";
         } catch (Exception e) {
             e.getMessage();
             return "loi : " + e.getMessage();
@@ -132,8 +138,8 @@ public class CreateVpsDly {
         ChromeOptions options = new ChromeOptions();
         options.setBinary(Constant.binaryGoogle);
 
-        WebDriver webDriver = new ChromeDriver(options);
-
+//        WebDriver webDriver = new ChromeDriver(options);
+        WebDriver webDriver = new ChromeDriver();
         while (true) {
             if (!FlagActive) {
                 break;

@@ -9,6 +9,7 @@ import Pojos.AccountInfo;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
+import com.sun.corba.se.impl.orbutil.closure.Constant;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class ConnectSSH {
             int port = 22;
             JSch s = new JSch();
             // s.addIdentity("E:\\Soft\\Remote Server Linux\\hack2.ppk");
-            s.addIdentity(accountInfo.getKey());
+            s.addIdentity(ConstantVariable.Constant.dirKey+"hacklslol1@yahoo.com"+ConstantVariable.Constant.typeKeyPPK);
 
             session = s.getSession(user, host, port);
             session.setTimeout(15000);
