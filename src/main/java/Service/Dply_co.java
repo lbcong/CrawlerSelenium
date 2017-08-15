@@ -61,6 +61,7 @@ public class Dply_co {
             WebElement submit_button = webDriver.findElement(By.xpath("//button[@class='g-recaptcha ']"));
             Thread.sleep(2000);
             submit_button.click();
+            System.out.println("CreateServer:");
             return true;
         } catch (Exception e) {
             System.out.println("CreateServer:" + e.getMessage());
@@ -73,7 +74,7 @@ public class Dply_co {
         try {
             Thread.sleep(2000);
             webDriver.navigate().to("https://dply.co/");
-            Thread.sleep(2000);
+            Thread.sleep(5000);
             WebElement link = webDriver.findElement(By.xpath("//a[@class='waves-effect waves-light btn-large blue darken-1 signin']"));
             Thread.sleep(2000);
             link.click();
@@ -92,6 +93,7 @@ public class Dply_co {
         try {
             Thread.sleep(2000);
             String text = webDriver.findElement(By.xpath("//div[@class='col s12 grey darken-4 grey-text']")).getText();
+            System.out.println("getIP:");
             return text;
         } catch (Exception e) {
             System.out.println("getIP:" + e.getMessage());

@@ -155,12 +155,12 @@ public class CreateVpsDly {
             System.out.println("getUser:" + listAccountInfo.get(indexofAccount).getUser());
             Thread.sleep(1000);
             dply_co.CreateServer(webDriver);
-            System.out.println("CreateServer:");
+            
             //
             Thread.sleep(120000);
             //
             String rs = dply_co.getIP(webDriver);
-            System.out.println("getIP:");
+            
 
             if (rs == null) {
                 continue;
@@ -170,6 +170,7 @@ public class CreateVpsDly {
             listAccountInfo.get(indexofAccount).setKey(Constant.dirKey + listAccountInfo.get(indexofAccount).getUser() + Constant.typeKeyPPK);
             //
             writeFile.writeFile(listAccountInfo);
+            
             //
             Session session = null;
             connectSSH.connectSSH(listAccountInfo.get(indexofAccount), session);
