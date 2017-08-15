@@ -138,8 +138,8 @@ public class CreateVpsDly {
         ChromeOptions options = new ChromeOptions();
         options.setBinary(Constant.binaryGoogle);
 
-//        WebDriver webDriver = new ChromeDriver(options);
-        WebDriver webDriver = new ChromeDriver();
+        WebDriver webDriver = new ChromeDriver(options);
+//        WebDriver webDriver = new ChromeDriver();
         while (true) {
             if (!FlagActive) {
                 break;
