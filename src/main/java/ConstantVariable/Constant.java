@@ -9,26 +9,25 @@ public interface Constant {
 
     String typeKeyPub = ".pub";
     String typeKeyPPK = ".ppk";
-    
+
     String dirFileAccount = "/app/Account.txt";
-//    String dirFileResult = "/app/Result.txt";
+//    String dirFileAccount = "D:\\NetBeansProjects\\Service-Cloud\\Crawler\\CrawlerSelenium-ubuntu\\Account.txt";
 //    String dirKey = "D:\\NetBeansProjects\\Service-Cloud\\Crawler\\CrawlerSelenium-ubuntu\\key\\";
-    String SSHKey_hacklslol1="ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA08ZiIsVseUVkG6bsV8SunT2SurNuY9M8OdpeM10Mz/fC0IgGn1oo60AjsruU7cTLezcR8Rvmcbfj0KQIxJzTzIFLRrRJVPzi6rgXY0ASn43ntRkK7Z/4jlEKVPIWnZbsJ9ztOJ7LQ6qZP66/BDaXJu2KQ/NboZk/yVs9kG9ls1SIQHlplxdmGPBPXD58u8P9+kg8wIW3Xk4vf/0L2RDHUcAPmYENhG9Rr4jMZmwVT2Hlb6W9SY8bv3DgTwa5VLv2o/r2wTDRr3R/lzpUzjJsDl5RJFUL466EcgS54QZ+f0HF70PrexO0wYA/3/wGYZXTbDqUHD8ENpa6/LbXQsqcXw== rsa-key-20170724";
-    
+    String SSHKey_hacklslol1 = "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA08ZiIsVseUVkG6bsV8SunT2SurNuY9M8OdpeM10Mz/fC0IgGn1oo60AjsruU7cTLezcR8Rvmcbfj0KQIxJzTzIFLRrRJVPzi6rgXY0ASn43ntRkK7Z/4jlEKVPIWnZbsJ9ztOJ7LQ6qZP66/BDaXJu2KQ/NboZk/yVs9kG9ls1SIQHlplxdmGPBPXD58u8P9+kg8wIW3Xk4vf/0L2RDHUcAPmYENhG9Rr4jMZmwVT2Hlb6W9SY8bv3DgTwa5VLv2o/r2wTDRr3R/lzpUzjJsDl5RJFUL466EcgS54QZ+f0HF70PrexO0wYA/3/wGYZXTbDqUHD8ENpa6/LbXQsqcXw== rsa-key-20170724";
+
     String dirFileResult = "/app/Result.txt";
     String dirKey = "/app/key/";
-    
     //
     String webDriverGoogle = "webdriver.chrome.driver";
-//    String dirDriverGoogle = "D:\\NetBeansProjects\\Service-Cloud\\chromedriver_win32\\chromedriver.exe";
-//    String binaryGoogle = "D:\\Google\\Chrome\\Application\\google-chrome.exe";
-    
+    String dirDriverGoogle = "D:\\NetBeansProjects\\Service-Cloud\\chromedriver_win32\\chromedriver.exe";
+    String binaryGoogle = "D:\\Google\\Chrome\\Application\\google-chrome.exe";
+
 //    
-    String dirDriverGoogle = "/app/chromedriver";
-    String binaryGoogle = "/app/.apt/usr/bin/google-chrome";
+//    String dirDriverGoogle = "/app/chromedriver";
+//    String binaryGoogle = "/app/.apt/usr/bin/google-chrome";
     //
     String webDriverFirefox = "webdriver.gecko.driver";
     String dirDriverFirefox = "D:\\NetBeansProjects\\Service-Cloud\\geckodriver.exe";
     String binaryFirefox = "E:\\Soft\\FirefoxPortable\\App\\Firefox64\\firefox.exe";
-    
+
 }

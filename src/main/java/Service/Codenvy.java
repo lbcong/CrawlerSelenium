@@ -5,7 +5,9 @@
  */
 package Service;
 
+import java.util.Random;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -15,7 +17,9 @@ import org.springframework.stereotype.Service;
 public class Codenvy {
 
     public boolean LoginCodenvy(String username, String passw, WebDriver webDriver) {
-
+        Random rd = new Random();
+        int r = 0;
+        boolean status = false;
         try {
             Thread.sleep(2000);
             String array[] = username.split("@");
@@ -42,13 +46,25 @@ public class Codenvy {
             System.out.println("spam https://codenvy.io/dashboard/#/ide/" + temp + "/work1 : done");
             while (true) {
                 try {
+                    r = rd.nextInt(9999);
                     Thread.sleep(2000);
                     System.out.println("run spam");
                     Actions myAction = new Actions(webDriver);
+
                     Thread.sleep(1000);
                     myAction.moveByOffset(794, 200).build().perform();
                     Thread.sleep(1000);
-                    myAction.sendKeys("delete").build().perform();
+                    if (!status) {
+                        myAction.keyDown(Keys.ALT).keyDown(Keys.SHIFT).sendKeys("N").keyUp(Keys.ALT).keyUp(Keys.SHIFT).build().perform();
+                        Thread.sleep(1000);
+                        myAction.sendKeys("wefwef4we3" + r).build().perform();
+                        Thread.sleep(1000);
+                        myAction.sendKeys(Keys.ENTER).perform();
+                        status = true;
+                    }
+
+                    Thread.sleep(1000);
+                    myAction.sendKeys("delsdfeete" + r).build().perform();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -62,26 +78,4 @@ public class Codenvy {
 
     }
 
-    public String getInfo(WebDriver webDriver) {
-
-        try {
-            Actions myAction = new Actions(webDriver);
-            Thread.sleep(10000);
-            WebElement element = webDriver.findElement(By.xpath("//div[@id='a65b435d2e1de8071bf54197be523db0']//*[@class='gtnode-inner']//*[@class='arrow-icon']"));
-            Thread.sleep(4000);
-
-            myAction.contextClick(element).build().perform();
-            Actions myAction1 = new Actions(webDriver);
-            myAction1.moveByOffset(52, 126).build().perform();
-            Thread.sleep(1000);
-            myAction1.click().build().perform();
-            Thread.sleep(1000);
-            WebElement element2 = webDriver.findElement(By.xpath("//div[@class='markdown-body']/ul/li/a/code"));
-            return element2.getText();
-
-        } catch (Exception e) {
-            System.out.println("getInfo:" + e.getMessage());
-        }
-        return null;
-    }
 }
