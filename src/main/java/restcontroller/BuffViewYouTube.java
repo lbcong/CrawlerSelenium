@@ -1,6 +1,7 @@
 package restcontroller;
 
 import ConstantVariable.Constant;
+import Service.CreateWebdriver;
 import java.io.File;
 import java.io.IOException;
 import javax.annotation.PostConstruct;
@@ -33,7 +34,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class BuffViewYouTube {
 
-  
+    @Autowired
+    CreateWebdriver createWebdriver;
 
     @RequestMapping(value = "/inputvideo", method = RequestMethod.GET)
     public String inputvideo() {
@@ -70,12 +72,13 @@ public class BuffViewYouTube {
     }
 
     public void testVideo(String url, int timeout) throws InterruptedException {
-        ChromeOptions options = new ChromeOptions();
-        options.setBinary(Constant.binaryGoogle);
-        System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
+//        ChromeOptions options = new ChromeOptions();
+//        options.setBinary(Constant.binaryGoogle);
+//        System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
         while (true) {
             try {
-                WebDriver webDriver = new ChromeDriver(options);
+                WebDriver webDriver = createWebdriver.getFirefox();
+//                WebDriver webDriver = new ChromeDriver(options);
 //                WebDriver webDriver = new ChromeDriver();
                 System.out.println("video1 : " + url);
                 webDriver.get(url);
