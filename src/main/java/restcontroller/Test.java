@@ -79,8 +79,11 @@ public class Test {
     public String manyclick() {
         String output = "";
         try {
+            String realpath = servletContext.getRealPath("");
+            String[] temp;
+            System.out.println(realpath);
 
-            WebDriver webDriver = createWebdriver.getGoogle();
+            WebDriver webDriver = createWebdriver.getGoogle(Constant.binaryGoogleWindows);
 
             webDriver.navigate().to("https://codeanywhere.com/");
 

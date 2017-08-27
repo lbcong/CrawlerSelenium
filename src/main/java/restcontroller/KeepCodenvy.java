@@ -67,7 +67,7 @@ public class KeepCodenvy {
 
     public void openBrowser(String user, String pass) {
 
-        WebDriver webDriver = createWebdriver.getGoogle("/app/.apt/usr/bin/google-chrome");
+        WebDriver webDriver = createWebdriver.getGoogle(Constant.binaryGoogleHeroku);
 
         try {
             codenvy.LoginCodenvy(user, pass, webDriver);

@@ -2,6 +2,7 @@ Service\ConnectSSH.class
 restcontroller\GreedingController.class
 restcontroller\KeepCodenvy.class
 restcontroller\Index.class
+Bean\SystemCofig.class
 restcontroller\BuffViewYouTube.class
 restcontroller\KeepLiveCodeanywhere.class
 Bean\SpringConfig.class

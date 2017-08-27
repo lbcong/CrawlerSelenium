@@ -5,7 +5,6 @@
  */
 package ConstantVariable;
 
-
 import java.io.File;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,12 +20,11 @@ public interface Constant {
 
     String dirFileResult = "/app/Result.txt";
     String dirKey = "/app/key/";
-    //
-
-
-//    
-//    String dirDriverGoogle = "/app/chromedriver";
-//    String binaryGoogle = "/app/.apt/usr/bin/google-chrome";
-
+    String binaryFirefoxLinux = "/usr/bin/firefox";
+    String binaryFirefoxWindows = "E:\\Soft\\FirefoxPortable\\App\\Firefox64\\firefox.exe";
+    
+    String binaryGoogleHeroku = "/app/.apt/usr/bin/google-chrome";
+    String binaryGoogleLinux = "/usr/bin/google-chrome";
+    String binaryGoogleWindows = "";
 
 }

@@ -50,7 +50,7 @@ public class GreedingController {
         try {
 
             //test tren heroku
-            webDriver = createWebdriver.getGoogle("/app/.apt/usr/bin/google-chrome");
+            webDriver = createWebdriver.getGoogle(Constant.binaryGoogleHeroku);
             //testVideo();
             openTestSite();
             login("admin", "12345");

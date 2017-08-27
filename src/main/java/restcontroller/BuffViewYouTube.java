@@ -75,7 +75,7 @@ public class BuffViewYouTube {
 
         while (true) {
             try {
-                WebDriver webDriver = createWebdriver.getFirefox();
+                WebDriver webDriver = createWebdriver.getFirefox(Constant.binaryFirefoxLinux);
 
                 System.out.println("video1 : " + url);
                 webDriver.get(url);

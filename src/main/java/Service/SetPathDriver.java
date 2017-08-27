@@ -1,5 +1,6 @@
 package Service;
 
+import Bean.SystemCofig;
 import java.io.File;
 import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,38 +11,32 @@ public class SetPathDriver {
 
     @Autowired
     ServletContext servletContext;
-
+    @Autowired
+    SystemCofig SystemCofig;
     public static String webDriverFirefox;
     public static String dirDriverFirefox;
-    public static String binaryFirefox;
 
     public static String webDriverGoogle;
     public static String dirDriverGoogle;
-    public static String binaryGoogle;
+
+    public SetPathDriver() {
+
+    }
 
     public String getPath() {
         try {
             String realpath = servletContext.getRealPath("");
-            String os = System.getProperty("os.name");
             String[] temp;
-            if (os.contains("Windows")) {
-                os = "Windows";
-            }
-            if (os.contains("Linux")) {
-                os = "Linux";
-            }
-
-            switch (os) {
+            switch (SystemCofig.os) {
                 case "Linux":
                     temp = realpath.split("apache-tomcat-8.0.46", 2);
+
                     return temp[0];
 
                 case "Windows":
                     temp = realpath.split("target", 2);
                     return temp[0];
-
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,24 +45,17 @@ public class SetPathDriver {
 
     public void setPathGoogle() {
         String realpath = getPath();
-        String os = System.getProperty("os.name");
-        if (os.contains("Windows")) {
-            os = "Windows";
-        }
-        if (os.contains("Linux")) {
-            os = "Linux";
-        }
-
-        switch (os) {
+        webDriverGoogle = "webdriver.chrome.driver";
+        switch (SystemCofig.os) {
             case "Linux":
-                webDriverGoogle = "webdriver.chrome.driver";
+
                 dirDriverGoogle = realpath + File.separator + "chromedriver";
-                binaryGoogle = "/usr/bin/google-chrome";
+
                 break;
             case "Windows":
-                webDriverGoogle = "webdriver.chrome.driver";
+
                 dirDriverGoogle = realpath + File.separator + "chromedriver.exe";
-                binaryGoogle = "google-chrome.exe";
+
                 break;
         }
 
@@ -75,23 +63,14 @@ public class SetPathDriver {
 
     public void setPathFireFox() {
         String realpath = getPath();
-        String os = System.getProperty("os.name");
-        if (os.contains("Windows")) {
-            os = "Windows";
-        }
-        if (os.contains("Linux")) {
-            os = "Linux";
-        }
-        switch (System.getProperty("os.name")) {
+        webDriverFirefox = "webdriver.gecko.driver";
+        switch (SystemCofig.os) {
             case "Linux":
-                webDriverFirefox = "webdriver.gecko.driver";
                 dirDriverFirefox = realpath + File.separator + "geckodriver";
-                binaryFirefox = "/usr/bin/firefox";
                 break;
             case "Windows":
-                webDriverFirefox = "webdriver.gecko.driver";
-                dirDriverFirefox = realpath + File.separator + "geckodriver";
-                binaryFirefox = "E:\\Soft\\FirefoxPortable\\App\\Firefox64\\firefox.exe";
+                dirDriverFirefox = realpath + File.separator + "geckodriver.exe";
+
                 break;
         }
 

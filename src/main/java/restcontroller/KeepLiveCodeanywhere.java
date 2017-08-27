@@ -65,7 +65,7 @@ public class KeepLiveCodeanywhere {
 
     public void openBrowser(String user, String pass, String id) {
 
-        WebDriver webDriver = createWebdriver.getGoogle("/app/.apt/usr/bin/google-chrome");
+        WebDriver webDriver = createWebdriver.getGoogle(Constant.binaryGoogleHeroku);
 
         try {
             codeAnyWhere.LoginCodeAnyWhere(user, pass, webDriver);
