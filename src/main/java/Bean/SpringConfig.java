@@ -5,7 +5,6 @@
  */
 package Bean;
 
-import ConstantVariable.ConstantVariable;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
@@ -16,6 +15,7 @@ import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import ConstantVariable.ConstantFtpServer;
 
 @Configuration
 public class SpringConfig {
@@ -23,9 +23,9 @@ public class SpringConfig {
     @Bean
     Session session() throws JSchException {
         Session session = null;
-        String host = ConstantVariable.ip;
-        String user = ConstantVariable.username;
-        String password = ConstantVariable.password;
+        String host = ConstantFtpServer.ip;
+        String user = ConstantFtpServer.username;
+        String password = ConstantFtpServer.password;
         int port = 22;
         JSch s = new JSch();
         session = s.getSession(user, host, port);

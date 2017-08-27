@@ -7,6 +7,7 @@ package restcontroller;
 
 import ConstantVariable.Constant;
 import Service.CodeAnyWhere;
+import Service.CreateWebdriver;
 import Service.UploadServices;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +26,8 @@ public class KeepLiveCodeanywhere {
     UploadServices uploadServices;
     @Autowired
     CodeAnyWhere codeAnyWhere;
+    @Autowired
+    CreateWebdriver createWebdriver;
 
     @RequestMapping(value = "/loginCodeAny", method = RequestMethod.GET)
     public String inputvideo() {
@@ -44,7 +47,7 @@ public class KeepLiveCodeanywhere {
                 public void run() {
                     try {
 
-                        openBrowser(user, pass,id);
+                        openBrowser(user, pass, id);
                     } catch (Exception e) {
                         e.getMessage();
                     }
@@ -60,16 +63,13 @@ public class KeepLiveCodeanywhere {
         return "CodeAnyLogin";
     }
 
-    public void openBrowser(String user, String pass,String id) {
-        ChromeOptions options = new ChromeOptions();
-        options.setBinary(Constant.binaryGoogle);
-        System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
-        WebDriver webDriver = new ChromeDriver(options);
-//        WebDriver webDriver = new ChromeDriver();
+    public void openBrowser(String user, String pass, String id) {
+
+        WebDriver webDriver = createWebdriver.getGoogle("/app/.apt/usr/bin/google-chrome");
 
         try {
             codeAnyWhere.LoginCodeAnyWhere(user, pass, webDriver);
-            String info = codeAnyWhere.getInfo(webDriver,id);
+            String info = codeAnyWhere.getInfo(webDriver, id);
             if (info != null) {
                 uploadServices.uploadFileTxtToSFtpServer(info, user);
                 System.out.println("upload : done " + info);

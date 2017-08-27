@@ -1,6 +1,7 @@
 package restcontroller;
 
 import ConstantVariable.Constant;
+import Service.CreateWebdriver;
 import java.io.File;
 import java.io.IOException;
 import javax.annotation.PostConstruct;
@@ -34,6 +35,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class GreedingController {
 
     public static WebDriver webDriver = null;
+    @Autowired
+    CreateWebdriver createWebdriver;
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String greeding() {
@@ -45,16 +48,8 @@ public class GreedingController {
     public String selenium() {
         String output = "";
         try {
-            //File pathToBinary = new File(Constant.binaryFirefox);
-            //FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
-            //FirefoxProfile firefoxProfile = new FirefoxProfile();
-            //WebDriver webDriver = new FirefoxDriver(ffBinary, firefoxProfile);
-            //System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
-            System.setProperty(Constant.webDriverFirefox, Constant.dirDriverGoogle);
-            ChromeOptions options = new ChromeOptions();
-            options.setBinary(Constant.binaryGoogle);
-            //webDriver = new HtmlUnitDriver();
-            webDriver = new ChromeDriver(options);
+
+            webDriver = createWebdriver.getGoogle("/app/.apt/usr/bin/google-chrome");
             //testVideo();
             openTestSite();
             login("admin", "12345");

@@ -72,14 +72,11 @@ public class BuffViewYouTube {
     }
 
     public void testVideo(String url, int timeout) throws InterruptedException {
-//        ChromeOptions options = new ChromeOptions();
-//        options.setBinary(Constant.binaryGoogle);
-//        System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
+
         while (true) {
             try {
                 WebDriver webDriver = createWebdriver.getFirefox();
-//                WebDriver webDriver = new ChromeDriver(options);
-//                WebDriver webDriver = new ChromeDriver();
+
                 System.out.println("video1 : " + url);
                 webDriver.get(url);
                 Thread.sleep((timeout * 60 + 5) * 1000);

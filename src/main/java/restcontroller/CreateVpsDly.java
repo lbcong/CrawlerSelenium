@@ -17,7 +17,6 @@ import com.jcraft.jsch.Session;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,12 +24,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import ConstantVariable.Constant;
-
-import org.openqa.selenium.chrome.ChromeOptions;
+import Service.CreateWebdriver;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestParam;
-
 
 @Controller
 public class CreateVpsDly {
@@ -47,6 +44,8 @@ public class CreateVpsDly {
     WriteFile writeFile;
     @Autowired
     Dply_co dply_co;
+    @Autowired
+    CreateWebdriver createWebdriver;
 
     private Thread[] thread;
     private int NumberAccount = 2;
@@ -60,13 +59,12 @@ public class CreateVpsDly {
             e.printStackTrace();
         }
     }
-    
+
     @RequestMapping(value = "/miner", method = RequestMethod.GET)
     public String inputvideo() {
 
         return "Miner";
     }
-    
 
     @RequestMapping(value = "/start", method = RequestMethod.GET)
     public String start(
@@ -130,16 +128,8 @@ public class CreateVpsDly {
 
         String output = "";
 
-//        File pathToBinary = new File(Constant.binaryFirefox);
-//        FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
-//        FirefoxProfile firefoxProfile = new FirefoxProfile();
-//        WebDriver webDriver = new FirefoxDriver(ffBinary, firefoxProfile);
-        System.setProperty(Constant.webDriverGoogle, Constant.dirDriverGoogle);
-        ChromeOptions options = new ChromeOptions();
-        options.setBinary(Constant.binaryGoogle);
+        WebDriver webDriver = createWebdriver.getGoogle();
 
-        WebDriver webDriver = new ChromeDriver(options);
-//        WebDriver webDriver = new ChromeDriver();
         while (true) {
             if (!FlagActive) {
                 break;
@@ -155,12 +145,11 @@ public class CreateVpsDly {
             System.out.println("getUser:" + listAccountInfo.get(indexofAccount).getUser() + listAccountInfo.get(indexofAccount).getPass());
             Thread.sleep(1000);
             dply_co.CreateServer(webDriver);
-            
+
             //
             Thread.sleep(120000);
             //
             String rs = dply_co.getIP(webDriver);
-            
 
             if (rs == null) {
                 continue;
@@ -170,7 +159,7 @@ public class CreateVpsDly {
             listAccountInfo.get(indexofAccount).setKey(Constant.dirKey + listAccountInfo.get(indexofAccount).getUser() + Constant.typeKeyPPK);
             //
             writeFile.writeFile(listAccountInfo);
-            
+
             //
             Session session = null;
             connectSSH.connectSSH(listAccountInfo.get(indexofAccount), session);

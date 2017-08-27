@@ -5,7 +5,6 @@
  */
 package Service;
 
-import ConstantVariable.ConstantVariable;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.Session;
@@ -20,6 +19,8 @@ import java.nio.file.Paths;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ConstantVariable.ConstantFtpServer;
+
 @Service
 public class UploadServices {
 
@@ -40,7 +41,7 @@ public class UploadServices {
             ChannelSftp channelSftp = null;
             session.setTimeout(15000);
             if (!session.isConnected()) {
-                session.setPassword(ConstantVariable.password);
+                session.setPassword(ConstantFtpServer.password);
                 session.connect();
             }
 
@@ -48,12 +49,12 @@ public class UploadServices {
             channel.connect();
             channelSftp = (ChannelSftp) channel;
 
-            channelSftp.cd(ConstantVariable.homedir + "/range");//local
+            channelSftp.cd(ConstantFtpServer.homedir + "/range");//local
 
             //write data to bytes
             //byte[] bytes = ObjectToByte(ListsInfo);
             Path path = Paths.get("/app/nb-configuration.xml");
-            OutputStream outputStream = channelSftp.put(ConstantVariable.homedir + "/range/" + name + ".txt");//remote
+            OutputStream outputStream = channelSftp.put(ConstantFtpServer.homedir + "/range/" + name + ".txt");//remote
             //write byte to stream
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, "UTF-8");
             BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);

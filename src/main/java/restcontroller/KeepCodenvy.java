@@ -7,6 +7,7 @@ package restcontroller;
 
 import ConstantVariable.Constant;
 import Service.Codenvy;
+import Service.CreateWebdriver;
 import Service.UploadServices;
 import java.io.File;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +29,8 @@ public class KeepCodenvy {
     UploadServices uploadServices;
     @Autowired
     Codenvy codenvy;
+    @Autowired
+    CreateWebdriver createWebdriver;
 
     @RequestMapping(value = "/loginCodenvy", method = RequestMethod.GET)
     public String inputvideo() {
@@ -64,16 +67,8 @@ public class KeepCodenvy {
 
     public void openBrowser(String user, String pass) {
 
-//        File pathToBinary = new File(Constant.binaryFirefox);
-//        FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
-//        FirefoxProfile firefoxProfile = new FirefoxProfile();
-//        System.setProperty(Constant.webDriverFirefox, Constant.dirDriverFirefox);
-//        WebDriver webDriver = new FirefoxDriver(ffBinary, firefoxProfile);
-        ChromeOptions options = new ChromeOptions();
-        options.setBinary(Constant.binaryGoogle);
-        System.setProperty("webdriver.chrome.driver", Constant.dirDriverGoogle);
-        WebDriver webDriver = new ChromeDriver(options);
-//        WebDriver webDriver = new ChromeDriver();
+        WebDriver webDriver = createWebdriver.getGoogle("/app/.apt/usr/bin/google-chrome");
+
         try {
             codenvy.LoginCodenvy(user, pass, webDriver);
 
