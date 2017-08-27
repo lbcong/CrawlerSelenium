@@ -80,8 +80,10 @@ public class Test {
         String output = "";
         try {
             String realpath = servletContext.getRealPath("");
-            String[] temp;
-            System.out.println(realpath);
+
+            System.out.println("real"+realpath);
+            
+            System.out.println("use"+System.getProperty("user.dir"));
 
             WebDriver webDriver = createWebdriver.getGoogle(Constant.binaryGoogleWindows);
 
