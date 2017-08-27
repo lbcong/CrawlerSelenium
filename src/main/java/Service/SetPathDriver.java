@@ -22,8 +22,26 @@ public class SetPathDriver {
     public String getPath() {
         try {
             String realpath = servletContext.getRealPath("");
-            String[] temp = realpath.split("target", 2);
-            return temp[0];
+            String os = System.getProperty("os.name");
+            String[] temp;
+            if (os.contains("Windows")) {
+                os = "Windows";
+            }
+            if (os.contains("Linux")) {
+                os = "Linux";
+            }
+
+            switch (os) {
+                case "Linux":
+                    temp = realpath.split("apache-tomcat-8.0.46", 2);
+                    return temp[0];
+
+                case "Windows":
+                    temp = realpath.split("target", 2);
+                    return temp[0];
+
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
