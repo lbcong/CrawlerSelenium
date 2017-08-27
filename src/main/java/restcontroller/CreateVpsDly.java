@@ -128,7 +128,7 @@ public class CreateVpsDly {
 
         String output = "";
 
-        WebDriver webDriver = createWebdriver.getGoogle();
+        WebDriver webDriver = createWebdriver.getGoogle("/app/.apt/usr/bin/google-chrome");
 
         while (true) {
             if (!FlagActive) {
