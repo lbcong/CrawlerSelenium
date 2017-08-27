@@ -57,11 +57,17 @@ public class SetPathDriver {
 
     public void setPathFireFox() {
         String realpath = getPath();
-
+        String os = System.getProperty("os.name");
+        if (os.contains("Windows")) {
+            os = "Windows";
+        }
+        if (os.contains("Linux")) {
+            os = "Linux";
+        }
         switch (System.getProperty("os.name")) {
             case "Linux":
                 webDriverFirefox = "webdriver.gecko.driver";
-                dirDriverFirefox = realpath + File.separator + "geckodriver.exe";
+                dirDriverFirefox = realpath + File.separator + "geckodriver";
                 binaryFirefox = "/usr/bin/firefox";
                 break;
             case "Windows":
